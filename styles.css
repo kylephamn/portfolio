@@ -15,6 +15,24 @@ body {
     padding-top: 70px; /* Offset for fixed navbar */
 }
 
+/* Scroll Progress Bar */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background-color: #8ba888;
+    z-index: 1001;
+    transition: width 0.25s ease;
+}
+
+/* Dark Mode Style */
+body.dark-mode #progress-bar {
+    background-color: #8ba888;
+}
+
+
 /* Navigation Bar */
 .navbar {
     position: fixed;

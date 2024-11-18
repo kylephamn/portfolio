@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const nightModeIcon = document.getElementById('dark-mode-icon');
     const navbarHeight = document.querySelector('.navbar').offsetHeight;
 
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercentage = (scrollTop / scrollHeight) * 100;
+        document.getElementById('progress-bar').style.width = scrollPercentage + '%';
+    });
+
     // Smooth Scrolling
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -18,12 +25,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetID);
 
             if (targetElement) {
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const elementHeight = targetElement.offsetHeight;
-                const viewportHeight = window.innerHeight;
+                let offsetPosition;
 
-                // Calculate offset to center the element, adjusting for navbar height
-                const offsetPosition = elementPosition + window.pageYOffset - (viewportHeight / 2) + (elementHeight / 2);
+                if (this.classList.contains('main-link')) {
+                    // Scroll to center the <h2> element
+                    const h2Element = targetElement.querySelector('h2');
+
+                    if (h2Element) {
+                        const elementPosition = h2Element.getBoundingClientRect().top;
+                        const elementHeight = h2Element.offsetHeight;
+                        const viewportHeight = window.innerHeight;
+
+                        offsetPosition = elementPosition + window.pageYOffset - (viewportHeight / 2) + (elementHeight / 2) - navbarHeight;
+                    } else {
+                        // If no <h2> found, fallback to default scrolling
+                        offsetPosition = targetElement.offsetTop - navbarHeight;
+                    }
+                } else {
+                    // Current behavior: center the target element
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const elementHeight = targetElement.offsetHeight;
+                    const viewportHeight = window.innerHeight;
+
+                    offsetPosition = elementPosition + window.pageYOffset - (viewportHeight / 2) + (elementHeight / 2);
+                }
 
                 window.scrollTo({
                     top: offsetPosition,
