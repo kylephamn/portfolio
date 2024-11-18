@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Kyle Pham Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pJ6arKP++2S5tyH/6OQX5VwY6eRds6OHjdciQ0tccRqdYlNvvEAqp6V9TVGakTV6vKIMvzwVF8SL5UQpF8d3YQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="styles.css">
-    <meta name="description" content="Kyle Pham's Portfolio - Junior Software Engineering Undergraduate at Colorado State University.">
-    <meta name="keywords" content="Kyle Pham, Software Engineer, Portfolio, Projects, Contact">
-    <meta name="author" content="Kyle Pham">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Kyle Pham Personal Website</title>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="styles.css">
+        
+        <meta name="description" content="Kyle Pham's Portfolio - Junior Software Engineering Undergraduate at Colorado State University.">
+        <meta name="keywords" content="Kyle Pham, Software Engineer, Portfolio, Projects, Contact">
+        <meta name="author" content="Kyle Pham">
+    </head>
 <body>
 
     <!-- Navigation Bar -->
@@ -22,20 +22,47 @@
         <ul class="nav-links" id="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#experiences">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
+            
+            <!-- Experience Dropdown -->
+            <li class="dropdown">
+                <a href="#experiences" class="dropbtn" aria-haspopup="true" aria-expanded="false">Experience</a>
+                <div class="dropdown-content" role="menu">
+                    <!-- List of Experience Items -->
+                    <a href="#experience1">Flight Software Engineering Intern</a>
+                    <a href="#experience2">Information Technology Infrastructure Intern</a>
+                    <a href="#experience3">Information Technology Support Technician</a>
+                    <a href="#experience4">Research Intern</a>
+                    <a href="#experience5">Peer Mentor</a>
+                    <a href="#experience6">Korean Teaching Assistant</a>
+                    <a href="#experience7">Front of House Team Member</a>
+                </div>
+            </li>
+            
+            <!-- Projects Dropdown -->
+            <li class="dropdown">
+                <a href="#projects" class="dropbtn" aria-haspopup="true" aria-expanded="false">Projects</a>
+                <div class="dropdown-content" role="menu">
+                    <!-- List of Project Items -->
+                    <a href="#project1">Pokéfinder</a>
+                    <a href="#project2">AMLE Algorithm</a>
+                    <a href="#project3">Block & Stream Cipher Program</a>
+                    <a href="#project4">SASE CSU Website</a>
+                    <a href="#project5">Color Detection App</a>
+                </div>
+            </li>
+            
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-
+    
         <!-- Night Mode Toggle -->
         <div class="night-mode-toggle">
-            <i class="fas fa-moon"></i>
-            <label class="switch">
-                <input type="checkbox" id="night-mode-checkbox">
-                <span class="slider round"></span>
-            </label>
-        </div>
+            <i class="fa-solid fa-moon" id="dark-mode-icon"></i>
+        <label class="switch">
+            <input type="checkbox" id="night-mode-checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
     </nav>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">
@@ -69,14 +96,14 @@
             <h2>Professional Work Experience</h2>
             <div class="experiences-grid">
                 <!-- Experience Item -->
-                <div class="experience-item">
+                <div class="experience-item" id="experience1">
                     <h3>Flight Software Engineering Intern</h3>
                     <h4>Lockheed Martin - Littleton, CO</h4>
                     <p><em>May 2025 - August 2025</em></p>
                     <p>Will develop Flight Software under the direction of Software Engineering Manager Karl Langas utilizing <strong>object-oriented languages and principles</strong>.</p>
                 </div>
                 
-                <div class="experience-item">
+                <div class="experience-item" id="experience2">
                     <h3>Information Technology Infrastructure Intern</h3>
                     <h4>Colorado State University Department of Information Technology -  Fort Collins, CO</h4>
                     <p><em>September 2024 - Present</em></p>
@@ -87,7 +114,7 @@
                     </p>
                 </div>
 
-                <div class="experience-item">
+                <div class="experience-item" id="experience3">
                     <h3>Information Technology Support Technician</h3>
                     <h4>Colorado State University Engineering Technology Services -  Fort Collins, CO</h4>
                     <p><em>July 2024 - Present</em></p>
@@ -98,7 +125,7 @@
                     </p>
                 </div>
 
-                <div class="experience-item">
+                <div class="experience-item" id="experience4">
                     <h3>Research Intern</h3>
                     <h4>Colorado State University Translational Neurological Laboratory - Fort Collins, CO</h4>
                     <p><em>May 2024 - August 2024</em></p>
@@ -109,7 +136,7 @@
                     </p>
                 </div>
 
-                <div class="experience-item">
+                <div class="experience-item" id="experience5">
                     <h3>Peer Mentor</h3>
                     <h4>Colorado State University Asian Pacific American Cultural Center - Fort Collins, CO</h4>
                     <p><em>August 2024 - Present</em></p>
@@ -120,7 +147,7 @@
                     </p>
                 </div>
 
-                <div class="experience-item">
+                <div class="experience-item" id="experience6">
                     <h3>Korean Teaching Assistant</h3>
                     <h4>Colorado State University LKOR100 - Fort Collins, CO</h4>
                     <p><em>October 2023 - December 2023</em></p>
@@ -130,7 +157,7 @@
                     </p>
                 </div>
 
-                <div class="experience-item">
+                <div class="experience-item" id="experience7">
                     <h3>Front of House Team Member</h3>
                     <h4>Chick-Fil-A - Fort Collins, CO</h4>
                     <p><em>March 2022 - July 2024</em></p>
@@ -150,7 +177,7 @@
             <h2>My Projects</h2>
             <div class="projects-grid">
                 <!-- Project Item -->
-                <div class="project-item">
+                <div class="project-item" id="project1">
                     <h3>
                         Pokéfinder
                         <a href="https://github.com/kylephamn/pokefinder" target="_blank" aria-label="Pokéfinder GitHub Repository" class="github-icon">
@@ -165,7 +192,7 @@
                         Developed a GUI-based application using <strong> Python Tkinter library</strong> to manage and retrieve 1000+ Pokémon data entries efficiently.
                     </p>
                 </div>
-                <div class="project-item">
+                <div class="project-item" id="project2">
                     <h3>Anchored Maximum Likelihood Estimation Algorithm (AMLE)</h3>
                     <h4>Colorado State University Translational Neurological Laboratory</h4>
                     <h4>May 2024 - August 2024</h4> 
@@ -177,7 +204,7 @@
                         Assessed model fit through outfit/infit mean squares and flagged unexpected responses with standardized residuals.
                     </p>
                 </div>
-                <div class="project-item">
+                <div class="project-item" id="project3">
                     <h3>Block & Stream Cipher Program</h3>
                     <h4>CS356 - System Securities</h4>
                     <h4>September 2024</h4>
@@ -188,7 +215,7 @@
                         Developed input validation and error handling for multiple command-line arguments, including file path verification and cipher mode selection (block or stream). 
                     </p>
                 </div>
-                <div class="project-item">
+                <div class="project-item" id="project4">
                     <h3>Society of Asian Scientists and Engineers CSU Website
                         <a href="https://github.com/kylephamn/SASE-Website" target="_blank" aria-label="SASE Website GitHub Repository" class="github-icon">
                             <i class="fab fa-github"></i>
@@ -202,7 +229,7 @@
                         Optimized  data retrieval to display board officers and chapter picture gallery.
                     </p>
                 </div>
-                <div class="project-item">
+                <div class="project-item" id="project5">
                     <h3>Color Detection App
                         <a href="https://github.com/kylephamn/color_detector" target="_blank" aria-label="Color Detection GitHub Repository" class="github-icon">
                             <i class="fab fa-github"></i>

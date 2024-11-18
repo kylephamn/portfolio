@@ -19,19 +19,21 @@ body {
 .navbar {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 0; /* Ensure the navbar starts from the left edge */
+    width: 100%; /* Span the full width */
     height: 70px;
     background-color: black;
     border-bottom: 1px solid #e0e0e0;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1em 2em;
-    
+    justify-content: space-between; /* Distribute space evenly */
+    padding: 0 2em; /* Adjust padding for left and right */
 }
 
+
+
+/* Navigation Logo */
 .nav-logo {
     font-size: 1.5em;
     font-weight: bold;
@@ -42,30 +44,91 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+/* Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
 }
 
 .nav-links li {
+    position: relative; /* Necessary for dropdown positioning */
     margin-left: 1.5em;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-links .dropbtn {
     text-decoration: none;
     color: white;
     font-weight: 500;
+    padding: 1em;
+    display: inline-block;
 }
+
 
 .nav-links a:hover {
     color: #c0cfb2;
 }
 
-.nav-toggle {
+/* Dropdown Container */
+.nav-links .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.nav-links .dropdown-content {
     display: none;
-    font-size: 1.5em;
-    color: white;
-    cursor: pointer;
+    position: absolute;
+    top: 100%; /* Align directly below the parent */
+    left: 0;
+    background-color: white; /* Match your site's background color */
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px; /* Rounded corners */
+    z-index: 1;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Show the Dropdown on Hover */
+.nav-links .dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Dropdown Links */
+.nav-links .dropdown-content a {
+    color: #1d1d1f;
+    padding: 0.75em 1em;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Hover Effects for Dropdown Links */
+.nav-links .dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #1d1d1f;
+}
+
+/* Hover effect on dropbtn */
+.nav-links .dropbtn:hover {
+    color: #c0cfb2; /* Optional: Change color on hover */
+}
+
+/* Night Mode Styles */
+body.dark-mode .nav-links .dropdown-content {
+    background-color: #2e2e31;
+}
+
+body.dark-mode .nav-links .dropdown-content a {
+    color: #f5f5f7;
+}
+
+body.dark-mode .nav-links .dropdown-content a:hover {
+    background-color: #444;
 }
 
 /* Hero Section */
@@ -203,6 +266,10 @@ body.dark-mode {
 .footer.dark-mode {
     background-color: #121212;
 }
+.nav-toggle {
+    display: none;
+}
+
 .navbar.dark-mode .nav-logo,
 .navbar.dark-mode .nav-links a,
 .navbar.dark-mode .nav-toggle,
@@ -244,6 +311,18 @@ body.dark-mode {
 .project-item.dark-mode p,
 .skill-item.dark-mode ul li {
     color: #d0d0d0;
+}
+
+body.dark-mode .nav-links .dropdown-content {
+    background-color: #2e2e31;
+}
+
+body.dark-mode .nav-links .dropdown-content a {
+    color: #f5f5f7;
+}
+
+body.dark-mode .nav-links .dropdown-content a:hover {
+    background-color: #444;
 }
 
 /* Skills Section Specific Styles */
@@ -332,8 +411,17 @@ body.dark-mode {
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.5em;
-    display: none;
+    display: none; /* Hidden by default */
     z-index: 1000;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.back-to-top.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 .back-to-top:hover {
@@ -354,13 +442,15 @@ body.dark-mode {
     align-items: center;
     color: white;
     cursor: pointer;
-    margin-left: 1em;
+    /* Adjust position if needed */
 }
 
 .night-mode-toggle i {
     font-size: 1.5em;
     margin-right: 0.5em;
+    color: white; /* Ensure the icon is visible against the navbar background */
 }
+
 
 /* Toggle Switch */
 .switch {
@@ -435,6 +525,33 @@ input:checked + .slider:before {
         display: block;
     }
 
+    /* Dropdown Content for Mobile */
+    .nav-links .dropdown-content {
+        position: static;
+        background-color: black;
+        box-shadow: none;
+        border-radius: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    
+    .nav-links .dropdown.active .dropdown-content {
+        max-height: 500px; /* Adjust as needed */
+    }
+
+    /* Dropdown Links for Mobile */
+    .nav-links .dropdown-content a {
+        padding-left: 2em;
+        color: white; /* or another color */
+    }
+
+    .nav-links .dropdown-content a:hover {
+        background-color: #333;
+        color: #c0cfb2;
+    }
+
+    /* Adjust Font Sizes on Mobile */
     .hero-content h1 {
         font-size: 20vw;
     }
@@ -451,17 +568,24 @@ input:checked + .slider:before {
         font-size: 1.1em;
     }
 
-    /* Adjust grid layout on mobile */
+    /* Adjust Grid Layout on Mobile */
     .skills-grid,
     .experiences-grid,
     .projects-grid {
         flex-direction: column;
     }
 
-    /* Ensure consistent container sizing */
+    /* Ensure Consistent Container Sizing */
     .skill-item,
     .experience-item,
     .project-item {
         flex: 1 1 auto;
     }
+}
+
+/* Additional Styling for Dropdown Stability */
+.nav-links .dropdown-content:hover {
+    display: block;
+    opacity: 1;
+    visibility: visible;
 }
