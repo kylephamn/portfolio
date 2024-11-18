@@ -117,6 +117,35 @@ body {
     color: #6e6e73;
 }
 
+.project-item h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content horizontally */
+    gap: 0.5em; /* Space between the text and icon */
+}
+
+/* Style for the GitHub icon link */
+.github-icon {
+    color: #587e54; /* Adjust color as needed */
+    font-size: 1em; /* Adjust icon size */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Hover effect */
+.github-icon:hover {
+    color: #8ba888; /* Darker color on hover */
+}
+
+/* Dark Mode Styles */
+body.dark-mode .github-icon {
+    color: #f5f5f7;
+}
+
+body.dark-mode .github-icon:hover {
+    color: #c0cfb2;
+}
+
 /* Skills, Experiences, and Projects Grids */
 .skills-grid,
 .experiences-grid,
@@ -239,18 +268,6 @@ body.dark-mode {
     color: #6e6e73;
     line-height: 1.5;
     text-align: center; /* Center the paragraph text */
-}
-
-/* Contact Button */
-.contact-button {
-    display: inline-block;
-    margin-top: 2em;
-    padding: 1em 2em;
-    background-color: #0071e3;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1em;
 }
 
 .contact-button:hover {
