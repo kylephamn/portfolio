@@ -102,9 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Back-to-Top Button Visibility Toggle
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
-            backToTopButton.style.display = 'block';
+            backToTopButton.classList.add('show');
         } else {
-            backToTopButton.style.display = 'none';
+            backToTopButton.classList.remove('show');
         }
     });
 
@@ -115,8 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
-
-    // Night Mode Toggle with Persistence
 
     // Function to enable dark mode
     function enableDarkMode() {
