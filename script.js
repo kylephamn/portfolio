@@ -6,14 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToTopButton = document.getElementById('back-to-top');
     const nightModeCheckbox = document.getElementById('night-mode-checkbox');
     const body = document.body;
-    const nightModeIcon = document.getElementById('dark-mode-icon');
-    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+    const navbar = document.querySelector('.navbar');
+    const heroSection = document.querySelector('.hero-section');
+    const heroContent = document.querySelector('.hero-content');
+    const footer = document.querySelector('.footer');
+    const progressBar = document.getElementById('progress-bar');
+    const nightModeIcon = document.querySelector('.slider .fa-moon, .slider .fa-sun');
+    const navbarHeight = navbar.offsetHeight;
 
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrollPercentage = (scrollTop / scrollHeight) * 100;
-        document.getElementById('progress-bar').style.width = scrollPercentage + '%';
+        progressBar.style.width = scrollPercentage + '%';
     });
 
     // Smooth Scrolling
@@ -76,29 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Scroll Animations
-    const faders = document.querySelectorAll('.fade-in');
-
-    const appearOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
-                entry.target.classList.add('visible');
-                appearOnScroll.unobserve(entry.target);
-            }
-        });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
-
     // Back-to-Top Button Visibility Toggle
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
@@ -119,12 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to enable dark mode
     function enableDarkMode() {
         body.classList.add('dark-mode');
-        document.querySelector('.navbar').classList.add('dark-mode');
+        navbar.classList.add('dark-mode');
         navLinks.classList.add('dark-mode');
-        document.querySelector('.hero-section').classList.add('dark-mode');
-        document.querySelector('.hero-content').classList.add('dark-mode');
-        document.querySelector('.footer').classList.add('dark-mode');
+        heroSection.classList.add('dark-mode');
+        heroContent.classList.add('dark-mode');
+        footer.classList.add('dark-mode');
         backToTopButton.classList.add('dark-mode');
+        progressBar.classList.add('dark-mode');
 
         // Add dark-mode class to section contents
         document.querySelectorAll('.section-content').forEach(section => {
@@ -141,9 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.classList.add('dark-mode');
         });
 
-        nightModeIcon.classList.remove('fa-moon');
-        nightModeIcon.classList.add('fa-sun');
-
         localStorage.setItem('darkMode', 'enabled');
         nightModeCheckbox.checked = true;
     }
@@ -151,12 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to disable dark mode
     function disableDarkMode() {
         body.classList.remove('dark-mode');
-        document.querySelector('.navbar').classList.remove('dark-mode');
+        navbar.classList.remove('dark-mode');
         navLinks.classList.remove('dark-mode');
-        document.querySelector('.hero-section').classList.remove('dark-mode');
-        document.querySelector('.hero-content').classList.remove('dark-mode');
-        document.querySelector('.footer').classList.remove('dark-mode');
+        heroSection.classList.remove('dark-mode');
+        heroContent.classList.remove('dark-mode');
+        footer.classList.remove('dark-mode');
         backToTopButton.classList.remove('dark-mode');
+        progressBar.classList.remove('dark-mode');
 
         // Remove dark-mode class from section contents
         document.querySelectorAll('.section-content').forEach(section => {
@@ -172,9 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.contact-icon').forEach(icon => {
             icon.classList.remove('dark-mode');
         });
-
-        nightModeIcon.classList.remove('fa-sun');
-        nightModeIcon.classList.add('fa-moon');
 
         localStorage.setItem('darkMode', 'disabled');
         nightModeCheckbox.checked = false;
@@ -195,31 +173,27 @@ document.addEventListener('DOMContentLoaded', () => {
             disableDarkMode();
         }
     });
-});
 
-navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-// Handle dropdowns on mobile
-if (window.innerWidth <= 599) {
-    document.querySelectorAll('.nav-links .dropdown > .dropbtn').forEach(dropbtn => {
-        dropbtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default anchor behavior
-            const parentDropdown = dropbtn.parentElement;
-            parentDropdown.classList.toggle('active');
-        });
-    });
-}
-
-// Close mobile menu after clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (window.innerWidth <= 599) {
-            navLinks.classList.remove('active');
-            document.querySelectorAll('.nav-links .dropdown').forEach(dropdown => {
-                dropdown.classList.remove('active');
+    // Handle dropdowns on mobile
+    if (window.innerWidth <= 599) {
+        document.querySelectorAll('.nav-links .dropdown > .dropbtn').forEach(dropbtn => {
+            dropbtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default anchor behavior
+                const parentDropdown = dropbtn.parentElement;
+                parentDropdown.classList.toggle('active');
             });
-        }
+        });
+    }
+
+    // Close mobile menu after clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 599) {
+                navLinks.classList.remove('active');
+                document.querySelectorAll('.nav-links .dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
     });
 });

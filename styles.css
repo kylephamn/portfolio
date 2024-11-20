@@ -496,13 +496,12 @@ body.dark-mode #dark-mode-icon {
     background-color: #587e54;
 }
 
-/* Night Mode Toggle */
 .night-mode-toggle {
     display: flex;
-    align-items: center;
-    color: white;
-    cursor: pointer;
-    /* Adjust position if needed */
+    align-items:normal; /* Vertically center the switch */
+    height: 100%; /* Match the height of the navbar */
+    padding: 0 1em; /* Adjust horizontal padding as needed */
+    margin: 0; /* Remove any default margins */
 }
 
 .night-mode-toggle i {
@@ -516,8 +515,9 @@ body.dark-mode #dark-mode-icon {
 .switch {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 20px;
+    width: 50px; /* Adjust width as needed */
+    height: 25px; /* Adjust height as needed */
+    vertical-align: middle; /* Align vertically within parent */
 }
 
 .switch input {
@@ -527,15 +527,51 @@ body.dark-mode #dark-mode-icon {
 }
 
 .slider {
-    position: absolute;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
+    width: 50px; /* Adjust width for icons */
+    height: 25px; /* Adjust height for icons */
     background-color: #ccc;
-    transition: .4s;
+    transition: background-color 0.4s;
     border-radius: 34px;
+    overflow: hidden;
+}
+
+.slider .fa-moon,
+.slider .fa-sun {
+    position: absolute;
+    color: #fff;
+    font-size: 14px;
+    transition: opacity 0.4s;
+}
+
+.slider .fa-sun {
+    right: 10px;
+}
+
+.slider.round .fa-moon {
+    transform: translateX(-10px);
+}
+
+/* Positioning the icon on the right when checked */
+input:checked + .slider.round .fa-sun {
+    transform: translateX(10px);
+}
+
+/* Hide the opposite icon */
+input:checked + .slider .fa-moon {
+    display: none;
+}
+
+input:not(:checked) + .slider .fa-sun {
+    display: none;
 }
 
 .slider:before {
+    display: none;
     position: absolute;
     content: "";
     height: 14px;
@@ -557,6 +593,22 @@ input:focus + .slider {
 
 input:checked + .slider:before {
     transform: translateX(20px);
+}
+
+input:not(:checked) + .slider .fa-moon {
+    opacity: 1;
+}
+
+input:not(:checked) + .slider .fa-sun {
+    opacity: 0;
+}
+
+input:checked + .slider .fa-moon {
+    opacity: 0;
+}
+
+input:checked + .slider .fa-sun {
+    opacity: 1;
 }
 
 /* Responsive Design */
