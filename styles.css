@@ -498,7 +498,6 @@ body.dark-mode #dark-mode-icon {
 
 .night-mode-toggle {
     display: flex;
-    align-items:normal; /* Vertically center the switch */
     height: 100%; /* Match the height of the navbar */
     padding: 0 1em; /* Adjust horizontal padding as needed */
     margin: 0; /* Remove any default margins */
