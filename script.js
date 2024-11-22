@@ -28,55 +28,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Smooth Scrolling
-    document.querySelectorAll('.nav-links a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
+document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
 
-            const targetID = this.getAttribute('href');
-            const targetElement = document.querySelector(targetID);
+        const targetID = this.getAttribute('href');
+        const targetElement = document.querySelector(targetID);
 
-            if (targetElement) {
-                let offsetPosition;
+        if (targetElement) {
+            let offsetPosition;
 
-                if (this.classList.contains('main-link')) {
-                    // Scroll to center the <h2> element
-                    const h2Element = targetElement.querySelector('h2');
+            // Include 'skills' section in the main scrolling behavior
+            if (this.classList.contains('main-link') || targetID === '#skills') {
+                // Scroll to center the <h2> element
+                const h2Element = targetElement.querySelector('h2');
 
-                    if (h2Element) {
-                        const elementPosition = h2Element.getBoundingClientRect().top;
-                        const elementHeight = h2Element.offsetHeight;
-                        const viewportHeight = window.innerHeight;
-
-                        offsetPosition = elementPosition + window.pageYOffset - (viewportHeight / 2) + (elementHeight / 2) - navbarHeight;
-                    } else {
-                        // If no <h2> found, fallback to default scrolling
-                        offsetPosition = targetElement.offsetTop - navbarHeight;
-                    }
-                } else {
-                    // Current behavior: center the target element
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const elementHeight = targetElement.offsetHeight;
+                if (h2Element) {
+                    const elementPosition = h2Element.getBoundingClientRect().top;
+                    const elementHeight = h2Element.offsetHeight;
                     const viewportHeight = window.innerHeight;
 
-                    offsetPosition = elementPosition + window.pageYOffset - (viewportHeight / 2) + (elementHeight / 2);
+                    offsetPosition =
+                        elementPosition +
+                        window.pageYOffset -
+                        viewportHeight / 2 +
+                        elementHeight / 2 -
+                        navbarHeight;
+                } else {
+                    // If no <h2> found, fallback to default scrolling
+                    offsetPosition = targetElement.offsetTop - navbarHeight;
                 }
+            } else {
+                // Current behavior: center the target element
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const elementHeight = targetElement.offsetHeight;
+                const viewportHeight = window.innerHeight;
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                offsetPosition =
+                    elementPosition +
+                    window.pageYOffset -
+                    viewportHeight / 2 +
+                    elementHeight / 2;
             }
 
-            // Close mobile menu after click
-            if (window.innerWidth <= 768) {
-                navLinks.classList.remove('active');
-                // Also close any open dropdowns
-                document.querySelectorAll('.nav-links .dropdown').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        });
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth',
+            });
+        }
+
+        // Close mobile menu after click
+        if (window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+            // Also close any open dropdowns
+            document.querySelectorAll('.nav-links .dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
     });
+});
+
 
     // Responsive Navbar Toggle
     navToggle.addEventListener('click', () => {
