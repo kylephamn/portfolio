@@ -352,10 +352,9 @@ body.dark-mode .resume-button:focus {
     background-color: #6f8e70;
 }
 
-/* Tooltip text */
 .tooltip-text {
     visibility: hidden;
-    width: 220px; /* Adjust width as needed */
+    width: 220px;
     background-color: #444;
     color: #fff;
     text-align: center;
@@ -363,25 +362,68 @@ body.dark-mode .resume-button:focus {
     padding: 0.5em;
     position: absolute;
     z-index: 1;
-    top: 50%;
-    left: 105%; /* Position to the right of the button */
-    transform: translateY(-50%);
     opacity: 0;
     transition: opacity 0.3s;
-    /* Optional: Adjust max-width to prevent overflow */
     max-width: 300px;
 }
 
-/* Tooltip arrow */
-.tooltip-text::after {
+/* Tooltip for the left side */
+.tooltip-left {
+    top: 50%;
+    right: 105%; /* Position to the left of the button */
+    transform: translateY(-50%);
+}
+
+/* Arrow for the left side tooltip */
+.tooltip-left::after {
     content: "";
     position: absolute;
     top: 50%;
-    right: 100%; /* Position the arrow on the left side */
+    left: 100%; /* Arrow on the right side */
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #444;
+}
+
+/* Tooltip for the right side */
+.tooltip-right {
+    top: 50%;
+    left: 105%; /* Position to the right of the button */
+    transform: translateY(-50%);
+}
+
+/* Arrow for the right side tooltip */
+.tooltip-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* Arrow on the left side */
     transform: translateY(-50%);
     border-width: 6px;
     border-style: solid;
     border-color: transparent #444 transparent transparent;
+}
+
+/* Show tooltips on hover and focus */
+.resume-button:hover .tooltip-text,
+.resume-button:focus .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .tooltip-text {
+    background-color: #222;
+    color: #fff;
+}
+
+body.dark-mode .tooltip-left::after {
+    border-color: transparent transparent transparent #222;
+}
+
+body.dark-mode .tooltip-right::after {
+    border-color: transparent #222 transparent transparent;
 }
 
 /* Show the tooltip when hovering over the resume button */
