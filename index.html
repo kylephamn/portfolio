@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Kyle Pham's Personal Portfolio</title>
-        
+    
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="styles.css">
-        
         <meta name="description" content="Kyle Pham's Portfolio - Junior Software Engineering Undergraduate at Colorado State University.">
         <meta name="keywords" content="Kyle Pham, Software Engineer, Portfolio, Projects, Contact">
         <meta name="author" content="Kyle Pham">
+        
     </head>
 <body>
     <div id="progress-bar"></div>
@@ -75,7 +75,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section">
         <div class="hero-content">
-            <h1>Kyle Pham</h1>
+            <h1 id="hero-title">Kyle Pham</h1>
             <h2>3rd Year Software Engineering Undergraduate</h2>
             <h3>Colorado State University - Fort Collins, CO</h3>
         </div>
@@ -106,10 +106,24 @@
 
             <!-- Right Column: Image -->
             <div class="about-right">
-                <div class="image-container">
-                    <img src="kyle.webp" alt="Kyle Pham">
+                <div class="flip-card">
+                    <div class="flip-card-inner" id="flip-card-inner">
+                        <!-- Front Side -->
+                        <div class="flip-card-front">
+                            <img src="kyle.webp" alt="Kyle Pham">
+                        </div>
+                        <!-- Back Side -->
+                        <div class="flip-card-back">
+                            <p>
+                                I enjoy visiting art and natural history museums in my free time and while I am in different cities.
+
+                                I have been to the Houston Museum of Fine Art & Natural Sciences, Denver Museum of Fine Art & Natural Sciences, and the Boston Fine Arts Museum. <br>
+                                I plan on visiting the Seattle Art & Asian Art Museums.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-        </div>
+            </div>
     </section>
 
 
@@ -327,7 +341,7 @@
     <section id="contact" class="contact-section">
         <div class="section-content">
             <h2>Contact Me</h2>
-            <p>Feel free to reach out for inquires or just a friendly hello!</p>
+            <p>Please feel free to reach out for inquires or just a friendly hello!</p>
             <div class="contact-icons">
                 <a href="tel:+13462321580" class="contact-icon" aria-label="Phone"><i class="fas fa-phone"></i></a>
                 <a href="mailto:kylepham.n@gmail.com" class="contact-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>

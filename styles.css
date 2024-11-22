@@ -182,19 +182,27 @@ body.dark-mode .nav-links .dropdown-content a:hover {
     text-align: center;
 }
 
+
+
 .hero-content h1 {
     font-size: 20vw;
     background-image: linear-gradient(90deg, #8ba888, #c0cfb2);
-    transition: background-position 0.2s ease-in-out;
+    transition: none;
     background-size: 150%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: block;
+    color: transparent;
 }
 
-.hero-content h1:hover {
-    background-position: 100%
+/* Disco Mode Styles */
+.disco-mode {
+    background-image: none !important; /* Remove background gradient */
+    background-clip: border-box !important; /* Reset background clip */
+    -webkit-background-clip: border-box !important; /* For WebKit browsers */
+    -webkit-text-fill-color: currentColor !important; /* Allow color property to take effect */
+    /* Remove color property to prevent overriding */
 }
 
 .hero-section.dark-mode {
@@ -222,17 +230,90 @@ body.dark-mode .nav-links .dropdown-content a:hover {
 }
 
 /* Right Column */
-.about-right {
-    flex: 1 1 35%; /* Adjusts the width, can be changed as needed */
+/* .about-right {
+    flex: 1 1 35%; 
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .image-container {
     padding-top: 83px; 
     padding-right: 50px;
 }
+
+/* Flip Card Container */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Flip Card Sides */
+.flip-card-front, .flip-card-back {
+    position: relative;
+    width: 100%;
+    height: auto;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Front Side */
+.flip-card-front img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Back Side */
+.flip-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .flip-card-back {
+    background-color: #2e2e31;
+    color: #f5f5f7;
+}
+
+/* Adjustments for About Right Column */
+.about-right {
+    flex: 1 1 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 83px; 
+    padding-right: 50px;
+}
+
 
 .image-container img {
     max-width: 100%;
@@ -254,12 +335,16 @@ body.dark-mode .nav-links .dropdown-content a:hover {
     max-width: 1200px;
     margin: 0 auto;
     padding: 4em 2em;
-    text-align: center;
+    text-align: left;
 }
 
 .section-content h2 {
     font-size: 2.5em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
+}
+
+.section-content h3 {
+    font-size: 1.7em;
 }
 
 .section-content p {
@@ -294,6 +379,11 @@ body.dark-mode .github-icon {
 
 body.dark-mode .github-icon:hover {
     color: #c0cfb2;
+}
+
+body.dark-mode .flip-card-back {
+    background-color: #2e2e31;
+    color: #f5f5f7;
 }
 
 /* Skills, Experiences, and Projects Grids */

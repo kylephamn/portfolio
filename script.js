@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nightModeIcon = document.querySelector('.slider .fa-moon, .slider .fa-sun');
     const navbarHeight = navbar.offsetHeight;
 
+    // Scroll Progress Bar
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -98,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Function to enable dark mode
+    // Night Mode Functions
     function enableDarkMode() {
         body.classList.add('dark-mode');
         navbar.classList.add('dark-mode');
@@ -128,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         nightModeCheckbox.checked = true;
     }
 
-    // Function to disable dark mode
     function disableDarkMode() {
         body.classList.remove('dark-mode');
         navbar.classList.remove('dark-mode');
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         disableDarkMode();
     }
 
-    // Event Listener for the checkbox
+    // Event Listener for the night mode checkbox
     nightModeCheckbox.addEventListener('change', () => {
         if (nightModeCheckbox.checked) {
             enableDarkMode();
@@ -196,4 +196,62 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Easter Egg: Disco Colors on h1 after 10 clicks within 15 seconds
+    const heroTitle = document.getElementById('hero-title');
+    let clickCount = 0;
+    let firstClickTime = null;
+    let discoInterval = null;
+
+    heroTitle.addEventListener('click', () => {
+        const currentTime = new Date().getTime();
+
+        if (!firstClickTime) {
+            firstClickTime = currentTime;
+        }
+
+        clickCount++;
+
+        // Check if 15 seconds have passed since the first click
+        if (currentTime - firstClickTime <= 15000) {
+            if (clickCount === 10) {
+                triggerDiscoEffect();
+                // Reset the counter and timer
+                clickCount = 0;
+                firstClickTime = null;
+            }
+        } else {
+            // Reset if more than 15 seconds have passed
+            clickCount = 1; // Current click counts as the first click
+            firstClickTime = currentTime;
+        }
+    });
+
+    function triggerDiscoEffect() {
+        // Add a class to override the gradient styles
+        heroTitle.classList.add('disco-mode');
+    
+        // Duration of the disco effect in milliseconds
+        const discoDuration = 5000;
+        const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+        let colorIndex = 0;
+    
+        // Change the color every 200 milliseconds
+        discoInterval = setInterval(() => {
+            heroTitle.style.color = colors[colorIndex];
+            // Also set -webkit-text-fill-color for compatibility
+            heroTitle.style.webkitTextFillColor = colors[colorIndex];
+            colorIndex = (colorIndex + 1) % colors.length;
+        }, 200);
+    
+        // Stop the disco effect after the duration
+        setTimeout(() => {
+            clearInterval(discoInterval);
+            // Reset to original styles
+            heroTitle.style.color = '';
+            heroTitle.style.webkitTextFillColor = '';
+            heroTitle.classList.remove('disco-mode'); // Remove the class to restore gradient
+        }, discoDuration);
+    }
+    
 });
