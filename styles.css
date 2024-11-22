@@ -68,7 +68,6 @@ body.dark-mode #progress-bar {
 }
 
 .favorite-song {
-    margin-top: 2em;
     text-align: center;
 }
 
@@ -78,7 +77,7 @@ body.dark-mode #progress-bar {
 }
 
 #spotify-player {
-    max-width:50%;
+    max-width:90%;
     margin: 0 auto;
 }
 
@@ -208,6 +207,46 @@ body.dark-mode .nav-links .dropdown-content a:hover {
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    align-items: flex-start;
+    gap: 2em; /* Space between columns */
+}
+
+/* Left Column */
+.about-left {
+    flex: 1 1 60%; /* Adjusts the width, can be changed as needed */
+}
+
+/* Right Column */
+.about-right {
+    flex: 1 1 35%; /* Adjusts the width, can be changed as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    padding-top: 83px; 
+    padding-right: 50px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Adds rounded corners to the image */
+    display: block; /* Ensures the image behaves as a block-level element */
+}
+
+/* Image Styling */
+.about-right {
+    flex: 1 1 35%; /* Adjusts the width, can be changed as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Section Content */
@@ -691,6 +730,17 @@ input:checked + .slider .fa-sun {
     .experience-item,
     .project-item {
         flex: 1 1 auto;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+    .about-left,
+    .about-right {
+        flex: 1 1 100%;
+    }
+    .about-right {
+        margin-top: 2em;
     }
 }
 
