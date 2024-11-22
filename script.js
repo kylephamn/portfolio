@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const nightModeIcon = document.querySelector('.slider .fa-moon, .slider .fa-sun');
     const navbarHeight = navbar.offsetHeight;
+    const flipCard = document.querySelector('.flip-card');
+
+    flipCard.addEventListener('click', function() {
+        this.classList.toggle('flipped');
+    });
 
     // Scroll Progress Bar
     window.addEventListener('scroll', () => {
