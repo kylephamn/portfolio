@@ -253,5 +253,5 @@ document.addEventListener('DOMContentLoaded', () => {
             heroTitle.classList.remove('disco-mode'); // Remove the class to restore gradient
         }, discoDuration);
     }
-    
+
 });
