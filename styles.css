@@ -881,23 +881,95 @@ input:checked + .slider .fa-sun {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: black;
-        padding: 1em 0;
+        display: flex;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        flex-wrap: nowrap; /* Prevent wrapping */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        flex: 1; /* Allow nav-links to take available space */
+        margin: 0 1em; /* Margin between logo and toggle */
+    }
+
+    .navbar {
+        height: 60px; /* Reduced height for mobile */
+        padding: 0 1em; /* Adjusted padding */
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Space between logo and toggle */
+    }
+
+    .nav-logo {
+        font-size: 1.5em; /* Reduced font size */
+    }
+
+    .nav-toggle {
+        display: none; /* Hidden on mobile */
     }
 
     .nav-links.active {
         display: flex;
     }
 
+    .nav-links {
+        display: flex;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        flex-wrap: nowrap; /* Prevent wrapping */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        flex: 1; /* Allow nav-links to take available space */
+        margin: 0 1em; /* Margin between logo and toggle */
+    }
+
+    .nav-links li a {
+        font-size: 0.9em; /* Adjusted font size */
+        padding: 0.5em 1em; /* Adjusted padding for touch targets */
+        white-space: nowrap; /* Prevent text from wrapping */
+        text-align: center; /* Center align the text */
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .night-mode-toggle {
+        flex-shrink: 0; /* Prevent the toggle from shrinking */
+    }
+
+    .nav-links-container {
+        position: relative;
+    }
+
+    .nav-links-container::before,
+    .nav-links-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 20px;
+        height: 100%;
+        pointer-events: none; /* Allow clicks to pass through */
+        z-index: 1;
+    }
+    
+    .nav-links-container::before {
+        left: 0;
+        background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+    }
+    
+    .nav-links-container::after {
+        right: 0;
+        background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+    }
+    
+    /* Optional: Add Scroll Snap for Enhanced UX */
+    .nav-links {
+        scroll-snap-type: x mandatory;
+    }
+    
     .nav-links li {
-        margin: 1em 0;
-        text-align: center;
+        scroll-snap-align: start;
     }
 
     .nav-toggle {
