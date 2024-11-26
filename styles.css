@@ -545,6 +545,9 @@ body.dark-mode .flip-card-back {
     min-height: 200px;
     flex-grow: 1;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transform: perspective(1000px) rotateX(0) rotateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .skill-item h3,
