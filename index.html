@@ -18,51 +18,48 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <!-- Nav Logo -->
         <a href="#home" class="nav-logo">Kyle Pham</a>
-        
-        <!-- Navigation Links Container -->
-        <div class="nav-links-container">
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home" class="main-link">Home</a></li>
-                <li><a href="#about" class="main-link">About</a></li>
-                
-                <!-- Experience Dropdown -->
-                <li class="dropdown">
-                    <a href="#experiences" class="dropbtn main-link" aria-haspopup="true" aria-expanded="false">Experience</a>
-                    <div class="dropdown-content" role="menu">
-                        <!-- List of Experience Items -->
-                        <a href="#experience1">Flight Software Engineering Intern</a>
-                        <a href="#experience2">Information Technology Infrastructure Intern</a>
-                        <a href="#experience3">Information Technology Support Technician</a>
-                        <a href="#experience4">Research Intern</a>
-                        <a href="#experience5">Peer Mentor</a>
-                        <a href="#experience6">Korean Teaching Assistant</a>
-                        <a href="#experience7">Front of House Team Member</a>
-                    </div>
-                </li>
-                
-                <!-- Projects Dropdown -->
-                <li class="dropdown">
-                    <a href="#projects" class="dropbtn main-link" aria-haspopup="true" aria-expanded="false">Projects</a>
-                    <div class="dropdown-content" role="menu">
-                        <!-- List of Project Items -->
-                        <a href="#project1">Pokéfinder <i class="fab fa-github"></i></a>
-                        <a href="#project2">AMLE Algorithm</a>
-                        <a href="#project3">Block & Stream Cipher Program</a>
-                        <a href="#project4">SASE CSU Website <i class="fab fa-github"></i></a>
-                        <a href="#project5">Color Detection <i class="fab fa-github"></i></a>
-                    </div>
-                </li>
-                
-                <li><a href="#skills" class="main-link">Skills</a></li>
-                <li><a href="#contact" class="main-link">Contact</a></li>
-            </ul>
+        <div class="nav-toggle" id="nav-toggle">
+            <i class="fas fa-bars"></i>
         </div>
-        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" class="main-link">Home</a></li>
+            <li><a href="#about" class="main-link">About</a></li>
+            
+            <!-- Experience Dropdown -->
+            <li class="dropdown">
+                <a href="#experiences" class="dropbtn main-link" aria-haspopup="true" aria-expanded="false" class="main-link">Experience</a>
+                <div class="dropdown-content" role="menu">
+                    <!-- List of Experience Items -->
+                    <a href="#experience1">Flight Software Engineering Intern</a>
+                    <a href="#experience2">Information Technology Infrastructure Intern</a>
+                    <a href="#experience3">Information Technology Support Technician</a>
+                    <a href="#experience4">Research Intern</a>
+                    <a href="#experience5">Peer Mentor</a>
+                    <a href="#experience6">Korean Teaching Assistant</a>
+                    <a href="#experience7">Front of House Team Member</a>
+                </div>
+            </li>
+            <!-- Projects Dropdown -->
+            <li class="dropdown">
+                <a href="#projects" class="dropbtn main-link" aria-haspopup="true" aria-expanded="false" class="main-link">Projects</a>
+                <div class="dropdown-content" role="menu">
+                    <!-- List of Project Items -->
+                    <a href="#project1">Pokéfinder <i class="fab fa-github"></i></a>
+                    <a href="#project2">AMLE Algorithm</a>
+                    <a href="#project3">Block & Stream Cipher Program</a>
+                    <a href="#project4">SASE CSU Website <i class="fab fa-github"></i></a>
+                    <a href="#project5">Color Detection <i class="fab fa-github"></i></a>
+                </div>
+            </li>
+            
+            <li><a href="#skills" class="main-link">Skills</a></li>
+            <li><a href="#contact" class="main-link">Contact</a></li>
+        </ul>
+    
         <!-- Night Mode Toggle -->
         <div class="night-mode-toggle">
-            <label class="switch" aria-label="Toggle Dark Mode">
+            <label class="switch">
                 <input type="checkbox" id="night-mode-checkbox">
                 <span class="slider round">
                     <i class="fa-solid fa-moon"></i>
