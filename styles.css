@@ -534,6 +534,22 @@ body.dark-mode .flip-card-back {
     gap: 2em;
 }
 
+.skill-icon {
+    font-size: 3em; /* Adjust size as needed */
+    margin: 0.5em;
+    color: #8ba888; /* Icon color */
+    vertical-align: middle;
+}
+
+/* Ensure non-icon languages are on a new line */
+.non-icon-languages {
+    margin-top: 1em;
+    font-size: 1.2em;
+    color: #6e6e73; /* Adjust text color */
+    display: block; /* Forces a new line */
+    line-height: 1.5; /* Adds spacing for readability */
+}
+
 /* Item Styles */
 .skill-item,
 .experience-item,
