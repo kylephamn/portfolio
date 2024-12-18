@@ -525,6 +525,97 @@ body.dark-mode .flip-card-back {
     color: #f5f5f7;
 }
 
+/* Courses Section */
+.courses-section {
+    padding: 4em 2em;
+    text-align: center;
+}
+
+.courses-section .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.courses-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.courses-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.course-item {
+    background-color: #f5f5f7;
+    padding: 1.5em;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.course-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: #1d1d1f;
+}
+
+.course-item p {
+    color: #6e6e73;
+    margin-bottom: 0.5em;
+}
+
+body.dark-mode .course-item {
+    background-color: #2e2e31;
+}
+
+body.dark-mode .course-item h3 {
+    color: #f5f5f7;
+}
+
+body.dark-mode .course-item p {
+    color: #d0d0d0;
+}
+
+/* Scrollable Dropdown */
+.dropdown-content.scrollable {
+    max-height: 200px; /* Limit the dropdown height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Scrollbar Styling */
+.dropdown-content.scrollable::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.dropdown-content.scrollable::-webkit-scrollbar-thumb {
+    background-color: #c0cfb2; /* Scrollbar thumb color */
+    border-radius: 4px;
+}
+
+.dropdown-content.scrollable::-webkit-scrollbar-thumb:hover {
+    background-color: #8ba888; /* Hover effect for scrollbar thumb */
+}
+
+.dropdown-content.scrollable::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Scrollbar track color */
+}
+
+/* Dark Mode Scrollbar Styling */
+body.dark-mode .dropdown-content.scrollable::-webkit-scrollbar-thumb {
+    background-color: #8ba888;
+}
+
+body.dark-mode .dropdown-content.scrollable::-webkit-scrollbar-thumb:hover {
+    background-color: #587e54;
+}
+
+body.dark-mode .dropdown-content.scrollable::-webkit-scrollbar-track {
+    background-color: #2e2e31;
+}
+
+
 /* Skills, Experiences, and Projects Grids */
 .skills-grid,
 .experiences-grid,
@@ -899,6 +990,10 @@ input:checked + .slider .fa-sun {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .courses-grid {
+        flex-direction: column;
+    }
+
     .nav-links {
         display: flex;
         overflow-x: auto; /* Enable horizontal scrolling */
