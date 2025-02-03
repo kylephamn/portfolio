@@ -270,4 +270,22 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
         }, discoDuration);
     }
 
+    function copyEmail() {
+    const email = "kylepham.n@gmail.com";
+
+    // Create a temporary textarea element
+    const tempInput = document.createElement("textarea");
+    tempInput.value = email;
+    document.body.appendChild(tempInput);
+
+    // Select and copy the email
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    // Show alert message
+    alert("Email copied to clipboard: " + email);
+}
+
+
 });
