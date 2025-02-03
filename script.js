@@ -270,22 +270,19 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
         }, discoDuration);
     }
 
-    function copyEmail() {
-    const email = "kylepham.n@gmail.com";
+    function copyEmail(event) {
+        event.preventDefault(); // Prevent the default action of the anchor tag
+    
+        const email = "kylepham.n@gmail.com";
+    
+        // Use the Clipboard API (modern approach)
+        navigator.clipboard.writeText(email).then(() => {
+            alert("Email copied to clipboard: " + email);
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
+        });
+    }
 
-    // Create a temporary textarea element
-    const tempInput = document.createElement("textarea");
-    tempInput.value = email;
-    document.body.appendChild(tempInput);
-
-    // Select and copy the email
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-
-    // Show alert message
-    alert("Email copied to clipboard: " + email);
-}
 
 
 });
