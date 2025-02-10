@@ -270,4 +270,19 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
         }, discoDuration);
     }
 
+    function copyEmail(event) {
+        event.preventDefault(); // Prevent the default action of the anchor tag
+    
+        const email = "kylepham.n@gmail.com";
+    
+        // Use the Clipboard API (modern approach)
+        navigator.clipboard.writeText(email).then(() => {
+            alert("Email copied to clipboard: " + email);
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
+        });
+    }
+
+
+
 });
