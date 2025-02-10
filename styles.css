@@ -1042,11 +1042,6 @@ input:checked + .slider .fa-sun {
     margin-bottom: 0.5em;
 }
 
-/* Dark Mode Adjustments */
-body.dark-mode .involvement-section {
-    background-color: #2e2e31; /* same as .experiences-section in dark mode */
-}
-
 body.dark-mode .involvement-item {
     background-color: #2e2e31;
 }
