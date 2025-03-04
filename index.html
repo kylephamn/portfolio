@@ -1,195 +1,283 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Kyle Pham's Personal Portfolio</title>
-        <link rel="icon" type="image/x-icon" href="favicon-2/favicon.ico">
-        <link rel="icon" type="image/x-icon" href="favicon-2/apple-touch-icon.png">
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyle Pham's Personal Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="favicon-2/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon-2/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="description" content="Kyle Pham's Portfolio - Junior Software Engineering Undergraduate at Colorado State University.">
+    <meta name="keywords" content="Kyle Pham, Software Engineer, Portfolio, Projects, Contact">
+    <meta name="author" content="Kyle Pham">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#8ba888',
+                            DEFAULT: '#44624a',
+                            dark: '#587e54',
+                        },
+                        accent: '#c0cfb2',
+                        cardDark: '#2e2e31',
+                        cardLight: '#f5f5f7',
+                    },  
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        /* Replace @apply with direct CSS */
+        .text-gradient {
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            z-index: 50;
+            transition: width 0.3s ease-out;
+            background-color: #8ba888; /* primary-light */
+        }
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="styles.css">
-        <meta name="description" content="Kyle Pham's Portfolio - Junior Software Engineering Undergraduate at Colorado State University.">
-        <meta name="keywords" content="Kyle Pham, Software Engineer, Portfolio, Projects, Contact">
-        <meta name="author" content="Kyle Pham">
+        /* Additional classes for flip card effect */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: bold !important;
+        }
+        #nav-links a, .group-hover\:block a {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 pt-16 dark:bg-gray-900 dark:text-white">
+    <!-- Progress Bar -->
+    <div id="progress-bar" class="progress-bar w-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-40 px-4 md:px-8 h-16 flex items-center justify-between">
+        <a href="#home" class="text-2xl font-bold bg-gradient-to-r from-primary-light to-accent text-gradient">Kyle Pham</a>
         
-    </head>
-<body>
-    <div id="progress-bar"></div>
-
-    <!-- Navigation Bar hi :D-->
-    <nav class="navbar">
-        <a href="#home" class="nav-logo">Kyle Pham</a>
-        <div class="nav-toggle" id="nav-toggle">
-            <i class="fas fa-bars"></i>
+        <div class="md:hidden">
+            <button id="nav-toggle" class="text-gray-700 dark:text-gray-200 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#home" class="main-link">Home</a></li>
-            <li><a href="#about" class="main-link">About</a></li>
-
+        
+        <ul id="nav-links" class="hidden md:flex space-x-6">
+            <li><a href="#home" class="hover:text-primary-light">Home</a></li>
+            <li><a href="#about" class="hover:text-primary-light">About</a></li>
+            <li><a href="#education" class="hover:text-primary-light">Education</a></li>
+            
             <!-- Experience Dropdown -->
-            <li class="dropdown">
-                <a href="#experiences" class="dropbtn main-link" aria-haspopup="true" aria-expanded="false" class="main-link">Experience</a>
-                <div class="dropdown-content" role="menu">
-                    <!-- List of Experience Items -->
-                    <!-- <a href="#experience1">Flight Software Engineering Intern</a> -->
-                    <a href="#experience2">Information Technology Infrastructure Intern</a>
-                    <a href="#experience3">Information Technology Support Assistant</a>
-                    <a href="#experience4">Research Intern</a>
-                    <a href="#experience5">Peer Mentor</a>
-                    <a href="#experience6">Korean Teaching Assistant</a>
-                    <a href="#experience7">Front of House Team Member</a>
+            <li class="relative group">
+                <a href="#experiences" class="hover:text-primary-light">Experience</a>
+                <div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-700 hidden group-hover:block">
+                    <div class="rounded-md py-1">
+                        <a href="#experience2" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Information Technology Infrastructure Intern</a>
+                        <a href="#experience3" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Information Technology Support Assistant</a>
+                        <a href="#experience4" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Research Intern</a>
+                        <a href="#experience5" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Peer Mentor</a>
+                        <a href="#experience6" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Korean Teaching Assistant</a>
+                        <a href="#experience7" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Front of House Team Member</a>
+                    </div>
                 </div>
             </li>
-
-            <li class="dropdown">
-                <a href="#student-involvement" class="dropbtn main-link" aria-haspopup="true" aria-expanded="false" class="main-link">Involvement</a>
-                <div class="dropdown-content" role="menu">
-                    <a href="#involvement1">Society of Asian Scientists and Engineers</i></a>
-                    <a href="#involvement2">ElevateCS</a>
-                    <a href="#involvement3">Developer's Network</a>
+            
+            <!-- Involvement Dropdown -->
+            <li class="relative group">
+                <a href="#student-involvement" class="hover:text-primary-light">Involvement</a>
+                <div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-700 hidden group-hover:block">
+                    <div class="rounded-md py-1">
+                        <a href="#involvement1" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Society of Asian Scientists and Engineers</a>
+                        <a href="#involvement2" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">ElevateCS</a>
+                        <a href="#involvement3" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Developer's Network</a>
+                        <a href="#involvement4" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Ram Robotics</a>
+                    </div>
                 </div>
             </li>
-
-            <li class="dropdown">
-                <a href="#courses" class="dropbtn main-link" aria-haspopup="true" aria-expanded="false">Courses</a>
-                <div class="dropdown-content scrollable" role="menu">
-                    <!-- List of Courses -->
-                    <a href="#course1">CS150B - Introduction to Python</a>
-                    <a href="#course2">CS164 - Introduction to Java</a>
-                    <a href="#course3">CS165 - Data Structures</a>
-                    <a href="#course4">CS220 - Discrete Structures</a>
-                    <a href="#course5">CS214 - Software Development</a>
-                    <a href="#course6">CT301 - Introduction to C++</a>
-                    <a href="#course7">CS312 - Modern Web Applications</a>
-                    <a href="#course8">CS314 - Software Engineering</a>
-                    <a href="#course9">CS356 - System Securities</a>
-                    <a href="#course10">CS370 - Operating Systems</a>
-                    <a href="#course1">CIS320 - Project Management for Information Systems</a>
-                    <a href="#course12">CIS360 - Systems Analysis and Design</a>
-                    <a href="#course13">JTC372 - Web Design & Development</a>
+            
+            <!-- Courses Dropdown -->
+            <li class="relative group">
+                <a href="#courses" class="hover:text-primary-light">Courses</a>
+                <div class="absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white dark:bg-gray-700 hidden group-hover:block max-h-64 overflow-y-auto">
+                    <div class="rounded-md py-1">
+                        <a href="#course1" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">CS150B - Introduction to Python</a>
+                        <a href="#course2" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">CS164 - Introduction to Java</a>
+                        <a href="#course3" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">CS165 - Data Structures</a>
+                        <a href="#course4" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">CS220 - Discrete Structures</a>
+                        <a href="#course5" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">CS214 - Software Development</a>
+                        <a href="#course6" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">CT301 - Introduction to C++</a>
+                        <a href="#course7" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">CS312 - Modern Web Applications</a>
+                        <a href="#course8" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">CS314 - Software Engineering</a>
+                        <a href="#course9" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">CS356 - System Securities</a>
+                        <a href="#course10" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">CS370 - Operating Systems</a>
+                    </div>
                 </div>
             </li>
             
             <!-- Projects Dropdown -->
-            <li class="dropdown">
-                <a href="#projects" class="dropbtn main-link" aria-haspopup="true" aria-expanded="false" class="main-link">Projects</a>
-                <div class="dropdown-content" role="menu">
-                    <!-- List of Project Items -->
-                    <a href="#project1">TrueNAS API Quota Warning Script</a>
-                    <a href="#project2">Pokéfinder <i class="fab fa-github"></i></a>
-                    <a href="#project3">AMLE Algorithm</a>
-                    <a href="#project4">SQL Injection, Buffer Overflow, & Pathname Attack Simulations</a>
-                    <a href="#project5">SASE CSU Website <i class="fab fa-github"></i></a>
-                    <a href="#project6">Color Detection <i class="fab fa-github"></i></a>
-                    <a href="#project7">Knight Fight Game <i class="fab fa-github"></i></a>
+            <li class="relative group">
+                <a href="#projects" class="hover:text-primary-light">Projects</a>
+                <div class="absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white dark:bg-gray-700 hidden group-hover:block">
+                    <div class="rounded-md py-1">
+                        <a href="#project1" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">TrueNAS API Quota Warning Script</a>
+                        <a href="#project2" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Pokéfinder <i class="fab fa-github ml-1"></i></a>
+                        <a href="#project3" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">AMLE Algorithm</a>
+                        <a href="#project4" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">SQL Injection, Buffer Overflow, & Pathname Attack Simulations</a>
+                        <a href="#project5" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">SASE CSU Website <i class="fab fa-github ml-1"></i></a>
+                        <a href="#project6" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Color Detection <i class="fab fa-github ml-1"></i></a>
+                        <a href="#project7" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Knight Fight Game <i class="fab fa-github ml-1"></i></a>
+                    </div>
                 </div>
             </li>
             
-            <li><a href="#skills" class="main-link">Skills</a></li>
-            <li><a href="#contact" class="main-link">Contact</a></li>
+            <li><a href="#skills" class="hover:text-primary-light">Skills</a></li>
+            <li><a href="#contact" class="hover:text-primary-light">Contact</a></li>
         </ul>
-    
+        
         <!-- Night Mode Toggle -->
-        <div class="night-mode-toggle">
-            <label class="switch">
-                <input type="checkbox" id="night-mode-checkbox">
-                <span class="slider round">
-                    <i class="fa-solid fa-moon"></i>
-                    <i class="fa-solid fa-sun"></i>
-                </span>
-            </label>
+        <div class="ml-4">
+            <button id="night-mode-toggle" class="p-2 rounded-full focus:outline-none">
+                <i id="dark-mode-icon" class="fas fa-moon text-gray-700 dark:text-gray-300"></i>
+            </button>
         </div>
     </nav>
 
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-10 right-10 bg-primary-dark hover:bg-primary-light text-white rounded-full p-3 hidden opacity-0 transition-all duration-300 ease-in-out z-30">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-content">
-            <h1 id="hero-title">Kyle Pham</h1>
-            <h2>Engineer, Innovator, & Lifelong Learner.</h2>
-            <h2>3rd year Undergraduate in Software Engineering</h2>
-            <h3>Colorado State University - Fort Collins, CO</h3>
+    <section id="home" class="bg-gray-100 dark:bg-gray-800 min-h-screen flex items-center justify-center text-center font-normal">
+        <div class="px-4 sm:px-6 lg:px-8">
+            <h1 id="hero-title" class="text-[20vw] font-bold bg-gradient-to-r from-primary-light to-accent text-transparent bg-clip-text">Kyle Pham</h1>
+            <h2 class="text-2xl md:text-3xl mb-2 dark:text-gray-200 font-normal">Engineer, Innovator, & Lifelong Learner.</h2>
+            <h2 class="text-xl md:text-2xl mb-2 dark:text-gray-300 font-normal">3rd year Undergraduate in Software Engineering</h2>
+            <h3 class="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-normal">Colorado State University - Fort Collins, CO</h3>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="about-container">
-            <!-- Left Column: About Me and Spotify -->
-            <div class="about-left">
-                <div class="section-content">
-                    <h2>About Me</h2>
-                    <h3>Hello!</h3>
-                    <p>I am a First Generation Vietnamese American 3rd year undergraduate Computer Science Major concentrating in 
+    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:space-x-8">
+                <!-- Left Column: About Me and Spotify -->
+                <div class="md:w-2/3">
+                    <h2 class="text-4xl font-bold mb-8">About Me</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Hello!</h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                        I am a First Generation Vietnamese American 3rd year undergraduate Computer Science Major concentrating in 
                         Software Engineering. I like to create CS projects that challenge me to learn new techniques and languages!
                         In my free time, I enjoy cooking, playing volleyball, playing video games, and watching foreign films and action movies!
                     </p>
 
-                    <div class="resume-button-container">
-                        <a href="files/Pham, Kyle - Resume.pdf" target="_blank" class="resume-button" id="resume-button" aria-label="View my resume" aria-describedby="tooltip-resume">
+                    <div class="flex flex-wrap justify-center gap-4 my-8">
+                        <a href="files/Pham, Kyle - Resume.pdf" target="_blank" class="group relative inline-flex items-center px-6 py-3 bg-primary-light hover:bg-primary-dark text-white font-bold rounded-lg transition-colors duration-300">
                             View My Resume
-                            <span class="tooltip-text tooltip-left" id="tooltip-resume">Maybe download it? Maybe send it to a recruiter? Please?</span>
+                            <span class="absolute right-full mr-2 top-1/2 -translate-y-1/2 w-64 p-2 bg-gray-700 text-white text-sm rounded shadow opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                                Maybe download it? Maybe send it to a recruiter? Please?
+                            </span>
                         </a>
-                        <a href="files/Pham, Kyle  | CV.pdf" target="_blank" class="resume-button" id="cv-button" aria-label="View my CV" aria-describedby="tooltip-cv">
+                        <a href="files/Pham, Kyle  | CV.pdf" target="_blank" class="group relative inline-flex items-center px-6 py-3 bg-primary-light hover:bg-primary-dark text-white font-bold rounded-lg transition-colors duration-300">
                             View My CV
-                            <span class="tooltip-text tooltip-right" id="tooltip-cv">I know its curriculum vitae, but its too long and ugly to </span>
+                            <span class="absolute left-full ml-2 top-1/2 -translate-y-1/2 w-64 p-2 bg-gray-700 text-white text-sm rounded shadow opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                                I know its curriculum vitae, but its too long and ugly to
+                            </span>
                         </a>
                     </div>
-                </div>
 
-                <div class="favorite-song">
-                    <h3>My Favorite Playlist</h3>
-                    <!-- Spotify Embed with High-Resolution Cover Art -->
-                    <div id="spotify-player">
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0RI828ApgxtLLQG7T7gwBQ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <div class="mt-12">
+                        <h3 class="text-2xl font-semibold text-center mb-4">My Favorite Playlist</h3>
+                        <div class="max-w-xl mx-auto">
+                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0RI828ApgxtLLQG7T7gwBQ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        </div>
                     </div>
                 </div>
-                
-            </div>
 
-            <!-- Right Column: Image -->
-            <div class="about-right">
-                <div class="flip-card">
-                    <div class="flip-card-inner" id="flip-card-inner">
-                        <!-- Front Side -->
-                        <div class="flip-card-front">
-                            <img src="files/kyle.webp" alt="Kyle Pham">
-                        </div>
-                        <!-- Back Side -->
-                        <div class="flip-card-back">
-                            <p>
-                                I enjoy visiting art and natural history museums in my free time and while I am in different cities.
+                <!-- Right Column: Image -->
+                <div class="md:w-1/3 mt-8 md:mt-0">
+                    <div id="flip-card" class="perspective-1000 cursor-pointer">
+                        <div id="flip-card-inner" class="relative w-full h-full transition-transform duration-700 transform-style-3d">
+                            <!-- Front Side -->
+                            <div class="flip-card-front">
+                                <img src="files/kyle.webp" alt="Kyle Pham" class="w-full h-auto rounded-lg shadow-lg">
+                            </div>
+                            <!-- Back Side -->
+                            <div class="flip-card-back hidden absolute inset-0 bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg transform rotate-y-180 backface-hidden">
+                                <p class="text-gray-700 dark:text-gray-200">
+                                    I enjoy visiting art and natural history museums in my free time and while I am in different cities.
 
-                                I have been to the Houston Museum of Fine Art & Natural Sciences, Denver Museum of Fine Art & Natural Sciences, and the Boston Fine Arts Museum. <br>
-                                I plan on visiting the Seattle Art & Asian Art Museums.
-                            </p>
+                                    I have been to the Houston Museum of Fine Art & Natural Sciences, Denver Museum of Fine Art & Natural Sciences, and the Boston Fine Arts Museum. <br>
+                                    I plan on visiting the Seattle Art & Asian Art Museums.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Education Section (New) -->
+    <section id="education" class="py-16 px-4 sm:px-6 lg:px-8 ">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">Education</h2>
+            <div class="space-y-8">
+                <!-- Primary Education Item -->
+                <div id="education1" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Bachelor of Science, Computer Science</h3>
+                    <h4 class="text-xl text-gray-600 dark:text-gray-300 mb-2">Colorado State University - Fort Collins, CO</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">August 2022 - May 2026 (Expected)</p>
+                    <p class="mb-2"><strong>Concentration:</strong> Software Engineering</p>
+                    <p class="mb-2"><strong>GPA:</strong> 3.21/4.0</p>
+                    <p class="mb-2"><strong>Relevant Achievements:</strong></p>
+                    <ul class="list-disc ml-6 text-gray-600 dark:text-gray-300">
+                        <li>Dean's List (Fall 2023)</li>
+                        <li>Denver Foundation Reisher Scholar Receptient</li>
+                        <li>LKOR101 Korean Certificate of Commendation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Experiences Section -->
-    <section id="experiences" class="experiences-section">
-        <div class="section-content">
-            <h2>Professional Work Experience</h2>
-            <div class="experiences-grid">
-                <!-- Experience Item -->
-                <!-- <div class="experience-item" id="experience1">
-                    <h3>Flight Software Engineering Intern</h3>
-                    <h4>Lockheed Martin Space - Littleton, CO</h4>
-                    <p><em>May 2025 - August 2025</em></p>
-                    <p>Will develop Flight Software under the direction of Software Engineering Manager Karl Langas utilizing <strong>object-oriented languages and principles</strong>.</p>
-                </div> -->
-                
-                <div class="experience-item" id="experience2">
-                    <h3>Information Technology Infrastructure Intern</h3>
-                    <h4>Colorado State University Division of Information Technology -  Fort Collins, CO</h4>
-                    <p><em>September 2024 - Present</em></p>
-                    <p>
+    <section id="experiences" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">Professional Work Experience</h2>
+            <div class="space-y-8">
+                <div id="experience2" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Information Technology Infrastructure Intern</h3>
+                    <h4 class="text-xl text-gray-600 dark:text-gray-300 mb-2">Colorado State University Division of Information Technology - Fort Collins, CO</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">September 2024 - Present</p>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Managing server infrastructure to ensure service availability and scalable applications under the direct supervision of Director of Infrastructure Tony Schlak. <br>
                         Designing and implementing <strong>network and virtual & physical storage solutions</strong> to support seamless enterprise operations. <br>
                         Monitor storage systems to improve data access and performace by leveraging operating temperatures. <br>
@@ -197,330 +285,358 @@
                     </p>
                 </div>
 
-                <div class="experience-item" id="experience3">
-                    <h3>Information Technology Support Assistant</h3>
-                    <h4>Colorado State University Engineering Technology Services -  Fort Collins, CO</h4>
-                    <p><em>July 2024 - Present</em></p>
-                    <p>
+                <div id="experience3" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Information Technology Support Assistant</h3>
+                    <h4 class="text-xl text-gray-600 dark:text-gray-300 mb-2">Colorado State University Engineering Technology Services - Fort Collins, CO</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">July 2024 - Present</p>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Assisting <strong>15+</strong> users daily utilizing the FreshService ticketing system to accurately resolve issues. <br>
                         These issues range from hardware, software, grouper access, & account credential retrieval. <br>
-                        Ability to troubleshoot advanced issues across <strong>Windows, Linux, and MacOS</strong> operating systems. <br>
+                        Ability to troubleshoot advanced issues across <strong>Windows, Linux, and MacOS</strong> operating systems.
                     </p>
                 </div>
 
-                <div class="experience-item" id="experience4">
-                    <h3>Research Intern</h3>
-                    <h4>Colorado State University Translational Neurological Laboratory - Fort Collins, CO</h4>
-                    <p><em>May 2024 - August 2024</em></p>
-                    <p>
+                <div id="experience4" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Research Intern</h3>
+                    <h4 class="text-xl text-gray-600 dark:text-gray-300 mb-2">Colorado State University Translational Neurological Laboratory - Fort Collins, CO</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">May 2024 - August 2024</p>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Designed and deployed a <strong>java</strong> application to clean and interpret data files for a research grant. <br>
                         Engineered UX-friendly Excel workbook for non-technical clinicians to effectively record and visualize patient data. <br>
                         Refactored <strong>JavaScript</strong> GitHub project for an AMLE Algorithm to estimate Rasch Measures using <strong>VB.NET</strong>
                     </p>
                 </div>
 
-                <div class="experience-item" id="experience5">
-                    <h3>Peer Mentor</h3>
-                    <h4>Colorado State University Asian Pacific American Cultural Center - Fort Collins, CO</h4>
-                    <p><em>August 2024 - January 2025</em></p>
-                    <p>
+                <div id="experience5" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Peer Mentor</h3>
+                    <h4 class="text-xl text-gray-600 dark:text-gray-300 mb-2">Colorado State University Asian Pacific American Cultural Center - Fort Collins, CO</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">August 2024 - January 2025</p>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Provide opportunities for mentees to network and learn about the University and its resources. <br>
                         Working in sync with 5 mentors and 2 coordinators to organize engaging events for <strong>60+</strong> mentees. <br>
                         Promoting student success by refering students to resources to get assistance in many disciplines.
                     </p>
                 </div>
-
-                <div class="experience-item" id="experience6">
-                    <h3>Korean Teaching Assistant</h3>
-                    <h4>Colorado State University LKOR100 - Fort Collins, CO</h4>
-                    <p><em>October 2023 - December 2023</em></p>
-                    <p>
+                
+                <div id="experience6" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Korean Teaching Assistant</h3>
+                    <h4 class="text-xl text-gray-600 dark:text-gray-300 mb-2">Colorado State University LKOR100 - Fort Collins, CO</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">October 2023 - December 2023</p>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Supported the learning experience for <strong>50+</strong> students in a Korean language class by providing timely constructive verbal and written guidance. <br>
-                        Actively engaged with students, addressing questions and concerns related to the course material, fostering supportive learning environment. 
+                        Actively engaged with students, addressing questions and concerns related to the course material, fostering supportive learning environment.
                     </p>
                 </div>
-
-                <div class="experience-item" id="experience7">
-                    <h3>Front of House Team Member</h3>
-                    <h4>Chick-Fil-A - Fort Collins, CO</h4>
-                    <p><em>March 2022 - July 2024</em></p>
-                    <p>
+                
+                <div id="experience7" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Front of House Team Member</h3>
+                    <h4 class="text-xl text-gray-600 dark:text-gray-300 mb-2">Chick-Fil-A - Fort Collins, CO</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">March 2022 - July 2024</p>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Provided 2nd-mile service for <strong>400+</strong> guests quickly and accurately. <br>
                         Defused conflicts and foster a positive work atmosphere. <br>
                         Assisted in troubleshooting technical errors to provide 2nd-mile guest service. <br>
-                        Quickly adapted to fast-paced work environment with an insignificant margin of error. <br>
+                        Quickly adapted to fast-paced work environment with an insignificant margin of error.
                     </p>
                 </div>
+            </div>
         </div>
     </section>
 
-    <!--Student Involvement Section -->
-    <section id="student-involvement" class="involvement-section fade-in">
-        <div class="section-content">
-            <h2>Student Involvement</h2>
-            <div class="involvement-grid" id="involvement1">
-                <!-- Involvement Item 1 -->
-                <div class="involvement-item">
-                    <h3>Society of Asian Scientists and Engineers</h3>
-                    <p><strong>Role:</strong> Event Coordinator Chair</p>
-                    <p><em>August 2023 - Present</em></p>
-                    <p><strong>Highlight:</strong> Organized cultural events, workshops, and networking sessions for 40+ members, fostering leadership and community engagement.</p>
+    <!-- Student Involvement Section -->
+    <section id="student-involvement" class="py-16 px-4 sm:px-6 lg:px-8 ">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">Student Involvement</h2>
+            <div class="space-y-8">
+                <div id="involvement1" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Society of Asian Scientists and Engineers</h3>
+                    <p class="mb-2"><strong>Role:</strong> Event Coordinator Chair</p>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">August 2023 - Present</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Organized cultural events, workshops, and networking sessions for 40+ members, fostering leadership and community engagement.</p>
                 </div>
 
-                <!-- Involvement Item 2 -->
-                <div class="involvement-item" id="involvement2">
-                    <h3>ElevateCS</h3>
-                    <p><em>January 2025 - Present</em></p>
-                    <p><strong>Role:</strong> General Member</p>
-                    <p><strong>Highlight:</strong> Participating in professional development opportunities and networking with industry professionals.  </p>
+                <div id="involvement2" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">ElevateCS</h3>
+                    <p class="mb-2"><strong>Role:</strong> General Member</p>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">January 2025 - Present</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Participating in professional development opportunities and networking with industry professionals.</p>
                 </div>
 
-                <!-- Involvement Item 3 -->
-                <div class="involvement-item" id="involvement3">
-                    <h3>Developer's Network</h3>
-                    <p><em>September 2024 - Present</em></p>
-                    <p><strong>Role:</strong> General Member</p>
-                    <p><strong>Highlight:</strong> Participated in coding projects sponsored by industry companies. Collaborated with teammates to deliver on-theme projects.</p>
+                <div id="involvement3" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Developer's Network</h3>
+                    <p class="mb-2"><strong>Role:</strong> General Member</p>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">September 2024 - Present</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Participated in coding projects sponsored by industry companies. Collaborated with teammates to deliver on-theme projects.</p>
+                </div>
+
+                <div id="involvement4" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Ram Robotics</h3>
+                    <p class="mb-2"><strong>Role:</strong> Software Subteam: General Member</p>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">February 2025 - Present</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Developing an AI agent to detect objects mid air via image training, while still able to accurately release payload on target.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Courses Section -->
-    <section id="courses" class="courses-section">
-        <div class="section-content">
-            <h2>Courses</h2>
-            <div class="courses-grid">
+    <section id="courses" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">Courses</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Course Item 1 -->
-                <div class="course-item" id="course1">
-                    <h3>CS150B - Introduction to Python</h3>
-                    <p><strong>Topics:</strong> Write small programs, and construct written arguments on ways in which technology influences our modern culture.</p>
-                    <p><strong>Highlight:</strong> Survey of computer science, formal logic, and computational thinking. Includes learning basic elements of the Python programming language. </p>
+                <div id="course1" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CS150B - Introduction to Python</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Write small programs, and construct written arguments on ways in which technology influences our modern culture.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Survey of computer science, formal logic, and computational thinking. Includes learning basic elements of the Python programming language.</p>
                 </div>
+
                 <!-- Course Item 2 -->
-                <div class="course-item" id="course2">
-                    <h3>CS164 - Introduction to Java</h3>
-                    <p><strong>Topics:</strong> expressions, operators, booleans, conditionals, characters and strings, control loops, arrays, objects and classes, file input/output, interfaces, recursion, lists, and sorting.</p>
-                    <p><strong>Highlight:</strong> Computer programming for students with limited programming experience.</p>
+                <div id="course2" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CS164 - Introduction to Java</h3>
+                    <p class="mb-2"><strong>Topics:</strong> expressions, operators, booleans, conditionals, characters and strings, control loops, arrays, objects and classes, file input/output, interfaces, recursion, lists, and sorting.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Computer programming for students with limited programming experience.</p>
                 </div>
+
                 <!-- Course Item 3 -->
-                <div class="course-item" id="course3">
-                    <h3>CS 165 - Data Structures in Java</h3>
-                    <p><strong>Topics:</strong> Binary Search Trees, Stacks, Queues, Arrays, and Linked Lists</p>
-                    <p><strong>Highlight:</strong>Object-oriented concepts, assertions, inheritance, polymorphism, algorithms and data structures using an object oriented language.</p>
+                <div id="course3" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CS165 - Data Structures in Java</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Binary Search Trees, Stacks, Queues, Arrays, and Linked Lists</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Object-oriented concepts, assertions, inheritance, polymorphism, algorithms and data structures using an object oriented language.</p>
                 </div>
+
                 <!-- Course Item 4 -->
-                <div class="course-item" id="course4">
-                    <h3>CS220 - Discrete Structures</h3>
-                    <p><strong>Topics:</strong> Integer properties, logic, set theory, functions, combinatorics, graph theory, and algorithms.</p>
-                    <p><strong>Highlight:</strong> Integer representations and properties, propositions, predicates, sets, functions, program proofs, induction, counting, complexity; Python implementations of these concepts.</p>
+                <div id="course4" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CS220 - Discrete Structures</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Integer properties, logic, set theory, functions, combinatorics, graph theory, and algorithms.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Integer representations and properties, propositions, predicates, sets, functions, program proofs, induction, counting, complexity; Python implementations of these concepts.</p>
                 </div>
+
                 <!-- Course Item 5 -->
-                <div class="course-item" id="course5">
-                    <h3>CS214 - Software Development</h3>
-                    <p><strong>Topics:</strong> Software lifecycle, debugging, version control, testing methodologies, and user interface design.</p>
-                    <p><strong>Highlight:</strong> Development of large software systems. Design and enhance the features and quality of a large system while using tools for software engineering and project management.</p>
+                <div id="course5" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CS214 - Software Development</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Software lifecycle, debugging, version control, testing methodologies, and user interface design.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Development of large software systems. Design and enhance the features and quality of a large system while using tools for software engineering and project management.</p>
                 </div>
+
                 <!-- Course Item 6 -->
-                <div class="course-item" id="course6">
-                    <h3>CT301 - Introduction to C++</h3>
-                    <p><strong>Topics:</strong> Control structures, data types, file handling, dynamic memory allocation, and object-oriented programming concepts.</p>
-                    <p><strong>Highlight:</strong>C++ syntax, memory management, file input/output, pointers, references, exceptions, and object-oriented programming in C++.</p>
+                <div id="course6" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CT301 - Introduction to C++</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Control structures, data types, file handling, dynamic memory allocation, and object-oriented programming concepts.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> C++ syntax, memory management, file input/output, pointers, references, exceptions, and object-oriented programming in C++.</p>
                 </div>
+
                 <!-- Course Item 7 -->
-                <div class="course-item" id="course7">
-                    <h3>CS312 - Modern Web Applications</h3>
-                    <p><strong>Topics:</strong> HTML5, CSS3, JavaScript frameworks, RESTful APIs, and responsive web design principles.</p>
-                    <p><strong>Highlight:</strong>Development of the modern web application. Emphasis on the essentials needed to create fully functional web applications including rich graphical content and dynamic content, using modern web standards. 
-                        Explore service-based architecture, web UX design, asynchronous content delivery, and full-stack development.</p>
+                <div id="course7" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CS312 - Modern Web Applications</h3>
+                    <p class="mb-2"><strong>Topics:</strong> HTML5, CSS3, JavaScript frameworks, RESTful APIs, and responsive web design principles.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Development of the modern web application. Emphasis on the essentials needed to create fully functional web applications including rich graphical content and dynamic content, using modern web standards. Explore service-based architecture, web UX design, asynchronous content delivery, and full-stack development.</p>
                 </div>
+
                 <!-- Course Item 8 -->
-                <div class="course-item" id="course8">
-                    <h3>CS314 - Software Engineering</h3>
-                    <p><strong>Topics:</strong> Clean code, configuration management, continuous integration, testing, requirements, project management and teamwork.</p>
-                    <p><strong>Highlight:</strong> CS 314 Software Engineering introduces students to team-based development of large, complex software systems. 
-                        The tools used include Piazza, Slack, IntelliJ IDEA, GitHub, Maven, Webpack, Zenhub, Travis CI, and Code Climate.</p>
+                <div id="course8" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CS314 - Software Engineering</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Clean code, configuration management, continuous integration, testing, requirements, project management and teamwork.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> CS 314 Software Engineering introduces students to team-based development of large, complex software systems. The tools used include Piazza, Slack, IntelliJ IDEA, GitHub, Maven, Webpack, Zenhub, Travis CI, and Code Climate.</p>
                 </div>
+
                 <!-- Course Item 9 -->
-                <div class="course-item" id="course9">
-                    <h3>CS356 - System Securities</h3>
-                    <p><strong>Topics:</strong> Encryption, Decryption, File Handling, Block/Stream Ciphers</p>
-                    <p><strong>Highlight:</strong> Computer and system security, authentication, access control, malicious software, and software security.</p>
+                <div id="course9" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CS356 - System Securities</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Encryption, Decryption, File Handling, Block/Stream Ciphers</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Computer and system security, authentication, access control, malicious software, and software security.</p>
                 </div>
+
                 <!-- Course Item 10 -->
-                <div class="course-item" id="course10">
-                    <h3>CS370 - Operating Systems</h3>
-                    <p><strong>Topics:</strong> Basic OS terminology, process & thread management, memory management, virtualization, synchronization.</p>
-                    <p><strong>Highlight:</strong>The objective of this course is to understand the broad range of issues that underlie modern Operating Systems. 
-                        We focus on key concepts and algorithms that are used in both commercial and open-source operating systems. </p>
+                <div id="course10" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CS370 - Operating Systems</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Basic OS terminology, process & thread management, memory management, virtualization, synchronization.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> The objective of this course is to understand the broad range of issues that underlie modern Operating Systems. We focus on key concepts and algorithms that are used in both commercial and open-source operating systems.</p>
                 </div>
+
                 <!-- Course Item 11 -->
-                <div class="course-item" id="course11">
-                    <h3>CIS320 - Project Management for Information Systems</h3>
-                    <p><strong>Topics:</strong> Project planning, risk management, budgeting, stakeholder communication, and resource allocation.</p>
-                    <p><strong>Highlight:</strong> Project management concepts including work breakdown structure, estimating, scheduling, tools, and reports.</p>
+                <div id="course11" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CIS320 - Project Management for Information Systems</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Project planning, risk management, budgeting, stakeholder communication, and resource allocation.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Project management concepts including work breakdown structure, estimating, scheduling, tools, and reports.</p>
                 </div>
+
                 <!-- Course Item 12 -->
-                <div class="course-item" id="course12">
-                    <h3>CIS360 - Systems Analysis and Design</h3>
-                    <p><strong>Topics:</strong> Business process analysis, system requirements determination and specification, user interface design, and implementation alternative evaluation.</p>
-                    <p><strong>Highlight:</strong> Introduction to the systems development life cycle and related methodologies. Emphasis on analysis and design activities</p>
+                <div id="course12" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">CIS360 - Systems Analysis and Design</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Business process analysis, system requirements determination and specification, user interface design, and implementation alternative evaluation.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Introduction to the systems development life cycle and related methodologies. Emphasis on analysis and design activities.</p>
                 </div>
+
                 <!-- Course Item 13 -->
-                <div class="course-item" id="course13">
-                    <h3>JTC372 - Web Design & Development</h3>
-                    <p><strong>Topics:</strong> Principles of usability, HTML5 and CSS, web accessibility standards, and content management systems.</p>
-                    <p><strong>Highlight:</strong> Learn foundational information about designing websites and creating digital content.
-                        Approach the design and management of websites from the perspective of usability.</p>
+                <div id="course13" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2">
+                    <h3 class="text-xl font-bold mb-2 dark:text-white">JTC372 - Web Design & Development</h3>
+                    <p class="mb-2"><strong>Topics:</strong> Principles of usability, HTML5 and CSS, web accessibility standards, and content management systems.</p>
+                    <p class="text-gray-600 dark:text-gray-300"><strong>Highlight:</strong> Learn foundational information about designing websites and creating digital content. Approach the design and management of websites from the perspective of usability.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <div class="section-content">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                <!-- Project Item -->
-                <div class="project-item" id="project1">
-                    <h3>TrueNAS API Quota Warning Script</h3>
-                    <h4>Division of Information Technology, Infrastructure & Systems Team</h4>
-                    <h4>December 2024 - Febuary 2025</h4>
-                    <p><strong>Languages:</strong> Python3</p>
-                    <p><strong>Software and Frameworks: </strong>Threading, smtplib, logging, json, os, time, datetime, & requests</p>
-                    <p>Designed a <strong>Python </strong>script to retrieve datasets from enterprise storage to determine any quota overages and notify clients. <br>
+    <!-- Projects Section-->
+    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">My Projects</h2>
+            <div class="space-y-8">
+                <div id="project1" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">TrueNAS API Quota Warning Script</h3>
+                    <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-1">Division of Information Technology, Infrastructure & Systems Team</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">December 2024 - February 2025</p>
+                    <p class="mb-2"><strong>Languages:</strong> Python3</p>
+                    <p class="mb-3"><strong>Software and Frameworks:</strong> Threading, smtplib, logging, json, os, time, datetime, & requests</p>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Designed a <strong>Python</strong> script to retrieve datasets from enterprise storage to determine any quota overages and notify clients. <br>
                         Intentionally set designated storage threshold to maintain maximized data retrieval performance for end-users. <br>
-                        Leveraged RESTful API to achieve <strong>O(1) datastore retrieval</strong> with <strong>O(1) arithmetic </strong>to determine quota storage use for user notification. <br>
+                        Leveraged RESTful API to achieve <strong>O(1) datastore retrieval</strong> with <strong>O(1) arithmetic</strong> to determine quota storage use for user notification.
                     </p>
                 </div>
-                <div class="project-item" id="project2">
-                    <h3>
+
+                <div id="project2" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white flex items-center">
                         Pokéfinder
-                        <a href="https://github.com/kylephamn/pokefinder" target="_blank" aria-label="Pokéfinder GitHub Repository" class="github-icon">
+                        <a href="https://github.com/kylephamn/pokefinder" target="_blank" aria-label="Pokéfinder GitHub Repository" class="ml-2 text-primary-dark dark:text-primary-light hover:text-primary-light transition-colors duration-300">
                             <i class="fab fa-github"></i>
                         </a>
                     </h3>
-                    <h4>Personal Project</h4>
-                    <h4>October 2024</h4>
-                    <p><strong>Languages:</strong> Python3</p>
-                    <p><strong>Software and Frameworks: </strong>APIs, Tkinter & Pillow Libraries</p>
-                    <p>Integrated <strong>open-source APIs </strong>to fetch and display Pokémon sprites alongside comprehensive stats within the application interface. <br>
-                        Developed a GUI-based application using <strong> Python Tkinter library</strong> to manage and retrieve 1000+ Pokémon data entries efficiently.
+                    <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-1">Personal Project</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">October 2024</p>
+                    <p class="mb-2"><strong>Languages:</strong> Python3</p>
+                    <p class="mb-3"><strong>Software and Frameworks:</strong> APIs, Tkinter & Pillow Libraries</p>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Integrated <strong>open-source APIs</strong> to fetch and display Pokémon sprites alongside comprehensive stats within the application interface. <br>
+                        Developed a GUI-based application using <strong>Python Tkinter library</strong> to manage and retrieve 1000+ Pokémon data entries efficiently.
                     </p>
                 </div>
-                <div class="project-item" id="project3">
-                    <h3>Anchored Maximum Likelihood Estimation Algorithm (AMLE)</h3>
-                    <h4>Colorado State University Translational Neurological Laboratory</h4>
-                    <h4>May 2024 - August 2024</h4> 
-                    <p><strong>Languages:</strong> VB.NET</p>
-                    <p><strong>Software and Frameworks:</strong> Excel and Visual Studio Code</p>
-                    <p>
+
+                <div id="project3" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">Anchored Maximum Likelihood Estimation Algorithm (AMLE)</h3>
+                    <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-1">Colorado State University Translational Neurological Laboratory</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">May 2024 - August 2024</p>
+                    <p class="mb-2"><strong>Languages:</strong> VB.NET</p>
+                    <p class="mb-3"><strong>Software and Frameworks:</strong> Excel and Visual Studio Code</p>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Developed a Visual Basic program to estimate person abilities (theta) using AMLE with polytomous and dichotomous items, including corrections for extreme scores. <br>
                         Implemented Rasch-Andrich thresholds for rating scales, allowing for precise modeling of item categories and step transitions. <br>
                         Assessed model fit through outfit/infit mean squares and flagged unexpected responses with standardized residuals.
                     </p>
                 </div>
-                <div class="project-item" id="project4">
-                    <h3>SQL Injection, Buffer Overflow, & Pathname Attack Simulations</h3>
-                    <h4>CS356 - System Securities</h4>
-                    <h4>December 2024</h4>
-                    <p><strong>Languages:</strong> C++, Bash, SQL, Perl, Python, & PHP</p>
-                    <p><strong>Software and Frameworks:</strong> WireShark, Secure Copy, Port Forwarding, HTTP Requests, vim, and netcat/telnet </p>
-                    <p>
+
+                <div id="project4" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">SQL Injection, Buffer Overflow, & Pathname Attack Simulations</h3>
+                    <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-1">CS356 - System Securities</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">December 2024</p>
+                    <p class="mb-2"><strong>Languages:</strong> C++, Bash, SQL, Perl, Python, & PHP</p>
+                    <p class="mb-3"><strong>Software and Frameworks:</strong> WireShark, Secure Copy, Port Forwarding, HTTP Requests, vim, and netcat/telnet</p>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Identified SQL variable vulnerability and used exploit to gain unauthorized access to user database. <br>
                         Leveraged HTTP requests to overwhelm webserver with payload exceeding buffersize variable declared size. <br>
                         Discovered directory traversal weakness and failure to validate input, allowed root access and hidden files through address bar.
                     </p>
                 </div>
-                <div class="project-item" id="project5">
-                    <h3>Society of Asian Scientists and Engineers CSU Website
-                        <a href="https://github.com/kylephamn/SASE-Website" target="_blank" aria-label="SASE Website GitHub Repository" class="github-icon">
+
+                <div id="project5" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white flex items-center">
+                        Society of Asian Scientists and Engineers CSU Website
+                        <a href="https://github.com/kylephamn/SASE-Website" target="_blank" aria-label="SASE Website GitHub Repository" class="ml-2 text-primary-dark dark:text-primary-light hover:text-primary-light transition-colors duration-300">
                             <i class="fab fa-github"></i>
                         </a>
                     </h3>
-                    <h4>Society of Asian Scientists and Engineers Website </h4>
-                    <h4>October 2024</h4>
-                    <p><strong>Languages:</strong> HTML5/CSS & JavaScript</p>
-                    <p><strong>Software and Frameworks: </strong>Node.JS, GitHub Codespaces, React, & VS Code Live Server.</p>
-                    <p> Developed a UX-friendly front-end application for efficient task organization and management. <br>
+                    <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-1">Society of Asian Scientists and Engineers Website</h4>
+                    <p class="italic text-gray-500 dark:text-gray-400 mb-3">October 2024</p>
+                    <p class="mb-2"><strong>Languages:</strong> HTML5/CSS & JavaScript</p>
+                    <p class="mb-3"><strong>Software and Frameworks:</strong> Node.JS, GitHub Codespaces, React, & VS Code Live Server</p>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Developed a UX-friendly front-end application for efficient task organization and management. <br>
                         Accelerated development timeline by using Node.JS and VS Live Server to visualize improvements in real-time. <br>
-                        Optimized  data retrieval to display board officers and chapter picture gallery.
+                        Optimized data retrieval to display board officers and chapter picture gallery.
                     </p>
                 </div>
-                <div class="project-item" id="project6">
-                    <h3>Color Detection Application
-                        <a href="https://github.com/kylephamn/color_detector" target="_blank" aria-label="Color Detection GitHub Repository" class="github-icon">
+
+                <div id="project6" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white flex items-center">
+                        Color Detection Application
+                        <a href="https://github.com/kylephamn/color_detector" target="_blank" aria-label="Color Detection GitHub Repository" class="ml-2 text-primary-dark dark:text-primary-light hover:text-primary-light transition-colors duration-300">
                             <i class="fab fa-github"></i>
                         </a>
                     </h3>
-                    <h4>October 2024</h4>
-                    <p><strong>Languages:</strong> Python3 </p>
-                    <p><strong>Software and Frameworks: </strong>React Native, Bootstrap, Responsive Design, NumPy, Pillow Image, & Threading module </p>
-                    <p> Allow users to capture images and extract selected colors to identify via Hexcode ID using an API. <br>
+                    <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-1">October 2024</h4>
+                    <p class="mb-2"><strong>Languages:</strong> Python3</p>
+                    <p class="mb-3"><strong>Software and Frameworks:</strong> React Native, Bootstrap, Responsive Design, NumPy, Pillow Image, & Threading module</p>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Allow users to capture images and extract selected colors to identify via Hexcode ID using an API. <br>
                         Used Augmented Reality implementations to overlay color information directly onto the display. <br>
-                        Optimized image processing algorithms for better performance and to reduce resource usage. 
+                        Optimized image processing algorithms for better performance and to reduce resource usage.
                     </p>
                 </div>
-                <div class="project-item" id="project7">
-                    <h3>Knight Fight Game 
-                        <a href="https://github.com/kylephamn/Knight-Fight" target="_blank" aria-label="Knight Fight GitHub Repository" class="github-icon">
+
+                <div id="project7" class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white flex items-center">
+                        Knight Fight Game
+                        <a href="https://github.com/kylephamn/Knight-Fight" target="_blank" aria-label="Knight Fight GitHub Repository" class="ml-2 text-primary-dark dark:text-primary-light hover:text-primary-light transition-colors duration-300">
                             <i class="fab fa-github"></i>
                         </a>
                     </h3>
-                    <h4>April 2023</h4>
-                    <p><strong>Languages:</strong> Java23 </p>
-                    <p><strong>Software and Frameworks: </strong>UML, object-oriented programming, & IntelliJ IDEA</p>
-                    <p> Designed and implemented an object-oriented Java application featuring a text-based adventure game with modular classes, including data management, combat mechanics, and user interaction. <br>
+                    <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-1">April 2023</h4>
+                    <p class="mb-2"><strong>Languages:</strong> Java23</p>
+                    <p class="mb-3"><strong>Software and Frameworks:</strong> UML, object-oriented programming, & IntelliJ IDEA</p>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Designed and implemented an object-oriented Java application featuring a text-based adventure game with modular classes, including data management, combat mechanics, and user interaction. <br>
                         Implemented file I/O operations using Java to save and load game data via CSV files, ensuring persistent game management. <br>
                         Applied inheritance and polymorphism to create extensible classes like GameData and GameController for managing game logic and player commands.
                     </p>
                 </div>
-                <!-- Add more project items as needed -->
             </div>
         </div>
     </section>
-    
-        <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="section-content">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <!-- Skill Item -->
-                <div class="skill-item">
-                    <h3>Programming Languages</h3>
-                    <p>
-                        <span class="fab fa-python skill-icon"></span>
-                        <span class="fab fa-java skill-icon"></span>
-                        <span class="fab fa-js skill-icon"></span>
-                        <span class="fab fa-html5 skill-icon"></span>
-                        <span class="fab fa-css3-alt skill-icon"></span>
-                        <span class="fa-brands fa-php skill-icon"></span>
-                    </p>
-                    <p class="non-icon-languages">
-                        C++23, MATLAB, R, VB.NET, Perl, Bash, & SQL
-                    </p>
-                </div>                
-                <!-- Skill Item -->
-                <div class="skill-item">
-                    <h3>Development Tools</h3>
-                        <p> GitHub, JUnitTesting, Amazon Web Services (AWS),  IntelliJ IDEA, Visual Studio Code IDE, MobaXTerm, NetBeans, PowerShell,
-                            Linux, Windows, MacOS, LAN, Node.JS, PyCharm, Jupyter Notebook, Excel, Microsoft Visio, 
-                            Jamovi, VMWare, Machine Clustering, PandaLib, NumPy, 
-                            WinSCP, Windows Remote Desktop,  GUI Development (Tkinter), & Application Programming Interfaces (APIs)
-                        </p>
-                </div>
-                <!-- Skill Item -->
-                <div class="skill-item">
-                    <h3>Spoken Languages</h3>
-                    <p>Native Fluency in Vietnamese & English<br>
-                        Business Proficient in Korean and Spanish
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Programming Languages</h3>
+                    <div class="text-4xl mb-4 flex flex-wrap gap-4 text-primary-light">
+                        <span class="fab fa-python"></span>
+                        <span class="fab fa-java"></span>
+                        <span class="fab fa-js"></span>
+                        <span class="fab fa-html5"></span>
+                        <span class="fab fa-css3-alt"></span>
+                        <span class="fa-brands fa-php"></span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        C++23, Tailwind CSS, MATLAB, R, VB.NET, Perl, Bash, & SQL
                     </p>
                 </div>
-                <!-- Skill Item -->
-                <div class="skill-item">
-                    <h3>Intrapersonal</h3>
-                    <p>Complex Problem-Solving, strong verbal & communication skills, <br> 
+                
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Development Tools</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        GitHub, JUnitTesting, Amazon Web Services (AWS), IntelliJ IDEA, Visual Studio Code IDE, MobaXTerm, NetBeans, PowerShell,
+                        Linux, Windows, MacOS, LAN, Node.JS, PyCharm, Jupyter Notebook, Excel, Microsoft Visio, 
+                        Jamovi, VMWare, Machine Clustering, PandaLib, NumPy, 
+                        WinSCP, Windows Remote Desktop, GUI Development (Tkinter), & Application Programming Interfaces (APIs)
+                    </p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Spoken Languages</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Native Fluency in Vietnamese & English<br>
+                        Business Proficient in Korean and Spanish <br>
+                        Learning French
+                    </p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Intrapersonal</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Complex Problem-Solving, strong verbal & communication skills, <br> 
                         ability to manage fast-paced environments, interpret & improve on feedback, <br>
                         and ability to abstractly explain technical concepts to non-technical users
                     </p>
@@ -530,27 +646,327 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="section-content">
-            <h2>Contact Me</h2>
-            <p>Please feel free to reach out for inquires or just a friendly hello!</p>
-            <div class="contact-icons">
-                <a href="tel:+13462321580" class="contact-icon" aria-label="Phone"><i class="fas fa-phone"></i></a>
-                <a href="#" class="contact-icon" aria-label="Email" onclick="copyEmail(event)"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/kylephamn" class="contact-icon" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/kylephamn" class="contact-icon" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="files/qrcode.png" class="contact-icon" target="_blank" aria-label="QR Code"><i class="fa-regular fa-qrcode"></i></a>
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 ">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6 dark:text-white">Contact Me</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">Please feel free to reach out for inquiries or just a friendly hello!</p>
+            <div class="flex justify-center space-x-8 text-3xl">
+                <a href="tel:+13462321580" class="text-primary-dark dark:text-primary-light hover:text-primary-light dark:hover:text-primary transition-colors duration-300" aria-label="Phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="#" class="text-primary-dark dark:text-primary-light hover:text-primary-light transition-colors duration-300" aria-label="Email" id="email-copy">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/kylephamn" class="text-primary-dark dark:text-primary-light hover:text-primary-light transition-colors duration-300" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/kylephamn" class="text-primary-dark dark:text-primary-light hover:text-primary-light transition-colors duration-300" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="files/qrcode.png" class="text-primary-dark dark:text-primary-light hover:text-primary-light transition-colors duration-300" target="_blank" aria-label="QR Code">
+                    <i class="fa-regular fa-qrcode"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Kyle Pham. All rights reserved.</p>
+    <footer class="bg-white dark:bg-gray-800 py-6 px-4 shadow-inner">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-gray-600 dark:text-gray-300">&copy; 2025 Kyle Pham. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1/dist/confetti.browser.min.js"></script>
-    <script src="script.js"></script>
-    </body>
+    <!-- JavaScript -->
+    <script>
+        // Wait for the DOM to fully load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Variable Declarations
+            const navToggle = document.getElementById('nav-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const backToTopButton = document.getElementById('back-to-top');
+            const nightModeCheckbox = document.getElementById('night-mode-checkbox');
+            const body = document.body;
+            const navbar = document.querySelector('.navbar');
+            const heroSection = document.querySelector('.hero-section');
+            const heroContent = document.querySelector('.hero-content');
+            const footer = document.querySelector('.footer');
+            const progressBar = document.getElementById('progress-bar');
+            const nightModeIcon = document.querySelector('.slider .fa-moon, .slider .fa-sun');
+            const navbarHeight = navbar.offsetHeight;
+            const flipCard = document.querySelector('.flip-card');
+
+            flipCard.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+            });
+
+            // Scroll Progress Bar
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercentage = (scrollTop / scrollHeight) * 100;
+                progressBar.style.width = scrollPercentage + '%';
+            });
+
+            // Smooth Scrolling
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetID = this.getAttribute('href');
+                const targetElement = document.querySelector(targetID);
+
+                if (targetElement) {
+                    let offsetPosition;
+
+                    // Include 'skills' section in the main scrolling behavior
+                    if (this.classList.contains('main-link') || targetID === '#skills') {
+                        // Scroll to center the <h2> element
+                        const h2Element = targetElement.querySelector('h2');
+
+                        if (h2Element) {
+                            const elementPosition = h2Element.getBoundingClientRect().top;
+                            const elementHeight = h2Element.offsetHeight;
+                            const viewportHeight = window.innerHeight;
+
+                            offsetPosition =
+                                elementPosition +
+                                window.pageYOffset -
+                                viewportHeight / 2 +
+                                elementHeight / 2 -
+                                navbarHeight;
+                        } else {
+                            // If no <h2> found, fallback to default scrolling
+                            offsetPosition = targetElement.offsetTop - navbarHeight;
+                        }
+                    } else {
+                        // Current behavior: center the target element
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const elementHeight = targetElement.offsetHeight;
+                        const viewportHeight = window.innerHeight;
+
+                        offsetPosition =
+                            elementPosition +
+                            window.pageYOffset -
+                            viewportHeight / 2 +
+                            elementHeight / 2;
+                    }
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth',
+                    });
+                }
+
+                // Close mobile menu after click
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    // Also close any open dropdowns
+                    document.querySelectorAll('.nav-links .dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+
+
+            // Responsive Navbar Toggle
+            navToggle.addEventListener('click', () => {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                }
+            });
+
+            // Back-to-Top Button Visibility Toggle
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+
+            // Back-to-Top Button Click Event
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Night Mode Functions
+            function enableDarkMode() {
+                body.classList.add('dark-mode');
+                navbar.classList.add('dark-mode');
+                navLinks.classList.add('dark-mode');
+                heroSection.classList.add('dark-mode');
+                heroContent.classList.add('dark-mode');
+                footer.classList.add('dark-mode');
+                backToTopButton.classList.add('dark-mode');
+                progressBar.classList.add('dark-mode');
+
+                // Add dark-mode class to section contents
+                document.querySelectorAll('.section-content').forEach(section => {
+                    section.classList.add('dark-mode');
+                });
+
+                // Add dark-mode class to experience-item, project-item, and skill-item elements
+                document.querySelectorAll('.experience-item, .project-item, .skill-item').forEach(item => {
+                    item.classList.add('dark-mode');
+                });
+
+                // Add dark-mode class to contact icons
+                document.querySelectorAll('.contact-icon').forEach(icon => {
+                    icon.classList.add('dark-mode');
+                });
+
+                localStorage.setItem('darkMode', 'enabled');
+                nightModeCheckbox.checked = true;
+            }
+
+            function disableDarkMode() {
+                body.classList.remove('dark-mode');
+                navbar.classList.remove('dark-mode');
+                navLinks.classList.remove('dark-mode');
+                heroSection.classList.remove('dark-mode');
+                heroContent.classList.remove('dark-mode');
+                footer.classList.remove('dark-mode');
+                backToTopButton.classList.remove('dark-mode');
+                progressBar.classList.remove('dark-mode');
+
+                // Remove dark-mode class from section contents
+                document.querySelectorAll('.section-content').forEach(section => {
+                    section.classList.remove('dark-mode');
+                });
+
+                // Remove dark-mode class from experience-item, project-item, and skill-item elements
+                document.querySelectorAll('.experience-item, .project-item, .skill-item').forEach(item => {
+                    item.classList.remove('dark-mode');
+                });
+
+                // Remove dark-mode class from contact icons
+                document.querySelectorAll('.contact-icon').forEach(icon => {
+                    icon.classList.remove('dark-mode');
+                });
+
+                localStorage.setItem('darkMode', 'disabled');
+                nightModeCheckbox.checked = false;
+            }
+
+            // Check localStorage for theme preference
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                enableDarkMode();
+            } else {
+                disableDarkMode();
+            }
+
+            // Event Listener for the night mode checkbox
+            nightModeCheckbox.addEventListener('change', () => {
+                if (nightModeCheckbox.checked) {
+                    enableDarkMode();
+                } else {
+                    disableDarkMode();
+                }
+            });
+
+            // Handle dropdowns on mobile
+            if (window.innerWidth <= 599) {
+                document.querySelectorAll('.nav-links .dropdown > .dropbtn').forEach(dropbtn => {
+                    dropbtn.addEventListener('click', (e) => {
+                        e.preventDefault(); // Prevent default anchor behavior
+                        const parentDropdown = dropbtn.parentElement;
+                        parentDropdown.classList.toggle('active');
+                    });
+                });
+            }
+
+            // Close mobile menu after clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 599) {
+                        navLinks.classList.remove('active');
+                        document.querySelectorAll('.nav-links .dropdown').forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                });
+            });
+
+            // Easter Egg: Disco Colors on h1 after 10 clicks within 15 seconds
+            const heroTitle = document.getElementById('hero-title');
+            let clickCount = 0;
+            let firstClickTime = null;
+            let discoInterval = null;
+
+            heroTitle.addEventListener('click', () => {
+                const currentTime = new Date().getTime();
+
+                if (!firstClickTime) {
+                    firstClickTime = currentTime;
+                }
+
+                clickCount++;
+
+                // Check if 15 seconds have passed since the first click
+                if (currentTime - firstClickTime <= 15000) {
+                    if (clickCount === 10) {
+                        triggerDiscoEffect();
+                        // Reset the counter and timer
+                        clickCount = 0;
+                        firstClickTime = null;
+                    }
+                } else {
+                    // Reset if more than 15 seconds have passed
+                    clickCount = 1; // Current click counts as the first click
+                    firstClickTime = currentTime;
+                }
+            });
+
+            function triggerDiscoEffect() {
+                // Add a class to override the gradient styles
+                heroTitle.classList.add('disco-mode');
+            
+                // Duration of the disco effect in milliseconds
+                const discoDuration = 5000;
+                const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+                let colorIndex = 0;
+            
+                // Change the color every 200 milliseconds
+                discoInterval = setInterval(() => {
+                    heroTitle.style.color = colors[colorIndex];
+                    // Also set -webkit-text-fill-color for compatibility
+                    heroTitle.style.webkitTextFillColor = colors[colorIndex];
+                    colorIndex = (colorIndex + 1) % colors.length;
+                }, 200);
+            
+                // Stop the disco effect after the duration
+                setTimeout(() => {
+                    clearInterval(discoInterval);
+                    // Reset to original styles
+                    heroTitle.style.color = '';
+                    heroTitle.style.webkitTextFillColor = '';
+                    heroTitle.classList.remove('disco-mode'); // Remove the class to restore gradient
+                }, discoDuration);
+            }
+
+            function copyEmail(event) {
+                event.preventDefault(); // Prevent the default action of the anchor tag
+            
+                const email = "kylepham.n@gmail.com";
+            
+                // Use the Clipboard API (modern approach)
+                navigator.clipboard.writeText(email).then(() => {
+                    alert("Email copied to clipboard: " + email);
+                }).catch(err => {
+                    console.error("Failed to copy: ", err);
+                });
+            }
+
+
+
+        });
+    </script>
+</body>
 </html>
