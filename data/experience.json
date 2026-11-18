@@ -1,0 +1,101 @@
+[
+  {
+    "id": "lockheed-flight-software",
+    "role": "Flight Software Engineer Intern",
+    "org": "Lockheed Martin Space",
+    "location": "Littleton, CO",
+    "start": "2025-05",
+    "end": null,
+    "tags": ["MATLAB", "GitLab", "C", "XML", "Jira"],
+    "bullets": [
+      "Engineering production **MATLAB** code empowered by GitLab that will analyze & collect data to improve future program flights.",
+      "Identified and patched improper XML code to correctly populate hundreds of C header files using Jira to optimize function calls.",
+      "Collaborating on a team of **20+** skilled software engineers to develop quality code for program flight, integrating unclassified code into classified code repositories, and using testing techniques to validate operational integrity."
+    ]
+  },
+  {
+    "id": "csu-it-infrastructure",
+    "role": "Information Technology Infrastructure Intern",
+    "org": "Colorado State University Division of Information Technology",
+    "location": "Fort Collins, CO",
+    "start": "2024-09",
+    "end": null,
+    "tags": ["Python", "TrueNAS", "REST APIs", "Storage", "Networking"],
+    "bullets": [
+      "Managing server infrastructure to ensure service availability and scalable applications under the direct supervision of Director of Infrastructure Tony Schlak.",
+      "Designing and implementing **network and virtual & physical storage solutions** to support seamless enterprise operations.",
+      "Monitor storage systems to improve data access and performance by leveraging operating temperatures.",
+      "Designed and developed a Python TrueNAS Research Storage Quota Monitoring System to notify users beyond certain storage quota thresholds. Leveraging RESTful API calls to reduce space complexity to O(1) and time complexity to O(n)."
+    ]
+  },
+  {
+    "id": "csu-it-support",
+    "role": "Information Technology Support Assistant",
+    "org": "Colorado State University Engineering Technology Services",
+    "location": "Fort Collins, CO",
+    "start": "2024-07",
+    "end": null,
+    "tags": ["FreshService", "Windows", "Linux", "macOS"],
+    "bullets": [
+      "Assisting **15+** users daily utilizing the FreshService ticketing system to accurately resolve issues.",
+      "These issues range from hardware, software, grouper access, & account credential retrieval.",
+      "Ability to troubleshoot advanced issues across **Windows, Linux, and MacOS** operating systems."
+    ]
+  },
+  {
+    "id": "csu-research-intern",
+    "role": "Research Intern",
+    "org": "Colorado State University Translational Neurological Laboratory",
+    "location": "Fort Collins, CO",
+    "start": "2024-05",
+    "end": "2024-08",
+    "tags": ["Java", "Excel", "JavaScript", "VB.NET"],
+    "bullets": [
+      "Designed and deployed a **Java** application to clean and interpret data files for a research grant.",
+      "Engineered UX-friendly Excel workbook for non-technical clinicians to effectively record and visualize patient data.",
+      "Refactored **JavaScript** GitHub project for an AMLE Algorithm to estimate Rasch Measures using **VB.NET**."
+    ]
+  },
+  {
+    "id": "csu-peer-mentor",
+    "role": "Peer Mentor",
+    "org": "Colorado State University Asian Pacific American Cultural Center",
+    "location": "Fort Collins, CO",
+    "start": "2024-08",
+    "end": "2025-01",
+    "tags": ["Mentorship", "Event Planning"],
+    "bullets": [
+      "Provide opportunities for mentees to network and learn about the University and its resources.",
+      "Working in sync with 5 mentors and 2 coordinators to organize engaging events for **60+** mentees.",
+      "Promoting student success by referring students to resources to get assistance in many disciplines."
+    ]
+  },
+  {
+    "id": "csu-korean-ta",
+    "role": "Korean Teaching Assistant",
+    "org": "Colorado State University LKOR100",
+    "location": "Fort Collins, CO",
+    "start": "2023-10",
+    "end": "2023-12",
+    "tags": ["Teaching", "Korean"],
+    "bullets": [
+      "Supported the learning experience for **50+** students in a Korean language class by providing timely constructive verbal and written guidance.",
+      "Actively engaged with students, addressing questions and concerns related to the course material, fostering supportive learning environment."
+    ]
+  },
+  {
+    "id": "chick-fil-a",
+    "role": "Front of House Team Member",
+    "org": "Chick-Fil-A",
+    "location": "Fort Collins, CO",
+    "start": "2022-03",
+    "end": "2024-07",
+    "tags": ["Customer Service", "Teamwork"],
+    "bullets": [
+      "Provided 2nd-mile service for **400+** guests quickly and accurately.",
+      "Defused conflicts and foster a positive work atmosphere.",
+      "Assisted in troubleshooting technical errors to provide 2nd-mile guest service.",
+      "Quickly adapted to fast-paced work environment with an insignificant margin of error."
+    ]
+  }
+]
