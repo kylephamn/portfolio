@@ -1,16 +1,32 @@
 [
   {
+    "id": "lockheed-flight-software-associate",
+    "role": "Flight Software Engineer Associate & Merge Coordinator",
+    "org": "Lockheed Martin Space",
+    "location": "Littleton, CO",
+    "clearance": "Secret Clearance",
+    "start": "2026-06",
+    "end": null,
+    "tags": ["C++", "GitLab", "Merge Coordination", "PI Planning"],
+    "bullets": [
+      "Collaborated with **5+** intradisciplinary teams across **50+** engineers to streamline and coordinate merge requests into protected branches.",
+      "Engineered solutions to contribute to Flight Software utilizing **C++** to meet strict deadlines in parallel with national partners.",
+      "Lead programming increment meetings of **25+** engineers to align goals, maximize contributions, and deliver quality code."
+    ]
+  },
+  {
     "id": "lockheed-flight-software",
     "role": "Flight Software Engineer Intern",
     "org": "Lockheed Martin Space",
     "location": "Littleton, CO",
+    "clearance": "Secret Clearance",
     "start": "2025-05",
-    "end": null,
+    "end": "2026-06",
     "tags": ["MATLAB", "GitLab", "C", "XML", "Jira"],
     "bullets": [
       "Engineering production **MATLAB** code empowered by GitLab that will analyze & collect data to improve future program flights.",
       "Identified and patched improper XML code to correctly populate hundreds of C header files using Jira to optimize function calls.",
-      "Collaborating on a team of **20+** skilled software engineers to develop quality code for program flight, integrating unclassified code into classified code repositories, and using testing techniques to validate operational integrity."
+      "Collaborating on a team of **20+** skilled software engineers and engineers to develop quality code for program flight, aligning team goals with requirements, and using testing techniques to validate operational integrity."
     ]
   },
   {
@@ -19,13 +35,13 @@
     "org": "Colorado State University Division of Information Technology",
     "location": "Fort Collins, CO",
     "start": "2024-09",
-    "end": null,
+    "end": "2025-05",
     "tags": ["Python", "TrueNAS", "REST APIs", "Storage", "Networking"],
     "bullets": [
-      "Managing server infrastructure to ensure service availability and scalable applications under the direct supervision of Director of Infrastructure Tony Schlak.",
-      "Designing and implementing **network and virtual & physical storage solutions** to support seamless enterprise operations.",
-      "Monitor storage systems to improve data access and performance by leveraging operating temperatures.",
-      "Designed and developed a Python TrueNAS Research Storage Quota Monitoring System to notify users beyond certain storage quota thresholds. Leveraging RESTful API calls to reduce space complexity to O(1) and time complexity to O(n)."
+      "Managed server infrastructure to ensure service availability and scalable applications under the direct supervision of Director of Infrastructure Tony Schlak.",
+      "Designed and implemented **network and virtual & physical storage solutions** to support seamless enterprise operations.",
+      "Monitored storage systems to improve data access and performance by leveraging operating temperatures.",
+      "Designed and developed a Python TrueNAS Research Storage Quota Monitoring System to notify users beyond certain storage quota thresholds, leveraging RESTful API calls to reduce space complexity to O(1) and time complexity to O(n)."
     ]
   },
   {
@@ -34,12 +50,12 @@
     "org": "Colorado State University Engineering Technology Services",
     "location": "Fort Collins, CO",
     "start": "2024-07",
-    "end": null,
+    "end": "2024-10",
     "tags": ["FreshService", "Windows", "Linux", "macOS"],
     "bullets": [
-      "Assisting **15+** users daily utilizing the FreshService ticketing system to accurately resolve issues.",
-      "These issues range from hardware, software, grouper access, & account credential retrieval.",
-      "Ability to troubleshoot advanced issues across **Windows, Linux, and MacOS** operating systems."
+      "Assisted **15+** users daily utilizing the FreshService ticketing system to accurately resolve issues.",
+      "Resolved issues ranging from hardware, software, grouper access, & account credential retrieval.",
+      "Troubleshot advanced issues across **Windows, Linux, and MacOS** operating systems."
     ]
   },
   {

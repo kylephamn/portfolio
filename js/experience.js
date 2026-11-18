@@ -46,7 +46,10 @@
                 <article class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-1">
                     <div class="flex flex-wrap items-start justify-between gap-2">
                         <h3 class="text-xl md:text-2xl font-bold dark:text-white">${esc(x.role)}</h3>
-                        ${current ? '<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-primary-light/20 text-primary dark:text-accent">Current</span>' : ''}
+                        <div class="flex flex-wrap gap-2">
+                            ${x.clearance ? `<span class="text-xs font-semibold px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-500 text-gray-600 dark:text-gray-300">${esc(x.clearance)}</span>` : ''}
+                            ${current ? '<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-primary-light/20 text-primary dark:text-accent">Current</span>' : ''}
+                        </div>
                     </div>
                     <h4 class="text-base md:text-lg text-gray-600 dark:text-gray-300">${esc(x.org)} · ${esc(x.location)}</h4>
                     <p class="md:hidden text-sm italic text-gray-500 dark:text-gray-400 mt-1">${dates} · ${duration(x.start, x.end)}</p>
